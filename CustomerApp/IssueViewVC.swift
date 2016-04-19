@@ -17,8 +17,6 @@ class IssueViewVC: UIViewController {
     
 
     @IBOutlet weak var issueLabel: UILabel!
-    @IBOutlet weak var commentTextView: UITextView!
-    @IBOutlet weak var issueDescriptionTextView: UITextView!
     
     let navTitleFont = UIFont(name: "Lato-Black", size: 18)
     let navigationBarColor =  UIColor(red: 255, green: 255, blue: 255, alpha: 1)
@@ -26,6 +24,15 @@ class IssueViewVC: UIViewController {
     let highLightedLabelFont = UIFont(name: "Lato-Bold", size: 16)
     
     var content:NSMutableDictionary?
+    
+    
+    
+    @IBOutlet weak var issueDueDate: UILabel!
+    @IBOutlet weak var issueOwner: UILabel!
+    @IBOutlet weak var issueDescriptionTextView: UITextView!
+    @IBOutlet weak var sourceType: UILabel!
+    @IBOutlet weak var IssueRiskRating: UILabel!
+    @IBOutlet weak var commentTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
