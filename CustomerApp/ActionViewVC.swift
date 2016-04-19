@@ -23,11 +23,6 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
     @IBOutlet weak var approveAction: UITabBarItem!
     @IBOutlet weak var requestClarification: UITabBarItem!
     /* End: TabBar and TabBar Items */
-    
-    
-    @IBOutlet weak var actionDescriptionTextView: UITextView!
-    @IBOutlet weak var workDoneTextView: UITextView!
-    @IBOutlet weak var commentsTextView: UITextView!
 
     @IBOutlet weak var scrollView: UIScrollView! //ScrollView
     
@@ -45,6 +40,20 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
 
     @IBOutlet weak var issueLabel: UILabel!
     @IBOutlet weak var IssueStackView: UIStackView!
+    
+    
+    
+    @IBOutlet weak var actionTitle: UILabel!
+    @IBOutlet weak var issueTitle: UILabel!
+    @IBOutlet weak var actionOwnerOrganization: UILabel!
+    @IBOutlet weak var actionOwner: UILabel!
+    @IBOutlet weak var dummyName: UILabel!
+    @IBOutlet weak var actionDescriptionTextView: UITextView!
+    @IBOutlet weak var actionStartDate: UILabel!
+    @IBOutlet weak var actionDueDate: UILabel!
+    @IBOutlet weak var workDoneTextView: UITextView!
+    @IBOutlet weak var commentsTextView: UITextView!
+    
     
     
     @IBOutlet weak var downloadAllButton: UIButton!
@@ -70,7 +79,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         self.scrollView.scrollEnabled = true
         self.scrollView.pagingEnabled = true
         
-       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ActionViewVC.navigateToIssueVC(_:)))
+       let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
         self.IssueStackView.addGestureRecognizer(tapGesture)
         ApproveRequestTabBar.delegate = self
         
