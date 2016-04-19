@@ -25,6 +25,8 @@ class IssueViewVC: UIViewController {
     let navigationBarTitleColor = UIColor(red: 0.078, green: 0.451, blue: 0.749, alpha: 1.00)
     let highLightedLabelFont = UIFont(name: "Lato-Bold", size: 16)
     
+    var content:NSMutableDictionary?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

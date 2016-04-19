@@ -13,6 +13,8 @@ import UIKit
 class ActionViewVC: UIViewController, UITabBarDelegate {
     
     var actionElement: ActionElement?
+    var content:NSMutableDictionary?
+    var jsonDict:NSMutableDictionary?
     
     @IBOutlet weak var navApproveRequestTitle: UINavigationItem!
     
@@ -68,7 +70,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         self.scrollView.scrollEnabled = true
         self.scrollView.pagingEnabled = true
         
-       let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
+       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ActionViewVC.navigateToIssueVC(_:)))
         self.IssueStackView.addGestureRecognizer(tapGesture)
         ApproveRequestTabBar.delegate = self
         
@@ -89,6 +91,8 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         self.actionImplementation.font = highLightedLabelFont
         self.attachments.font = highLightedLabelFont
         self.issueLabel.font = highLightedLabelFont
+        
+        getForm();
     }
     
     deinit{
@@ -96,7 +100,49 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
     }
     
     func navigateToIssueVC(sender:UITapGestureRecognizer){
-        self.performSegueWithIdentifier("IssueVCSegue", sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let myController:IssueViewVC = storyboard.instantiateViewControllerWithIdentifier("IssueViewVC") as! IssueViewVC
+        myController.content = self.content;
+        self.navigationController?.pushViewController(myController, animated: true);
+
+        
+    }
+    
+    func getForm(){
+        let reportURL = m2API.actionDetailsDataUrl(actionElement!.taskId)
+        let request = NSMutableURLRequest(URL: reportURL)
+        request.HTTPMethod = "GET";
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let serverCall = HttpCall.init();
+        serverCall.getData(request){(data) -> Void in
+        
+            
+            do
+            {
+                 self.jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
+                
+                if let contents = self.jsonDict!["content"] as? NSDictionary
+                {
+                    self.content = NSMutableDictionary.init(dictionary: contents);
+                }
+                
+            }
+            catch let error as NSError {
+                // error handling
+                NSLog("error %@", error.description);
+            }
+        
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                //self.tableView.reloadData()
+                
+            })
+            
+        }
+        
+        
     }
 }
 
