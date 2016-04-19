@@ -21,6 +21,8 @@
 		F9CAB6EB1CB3CB7A007FCCE6 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9CAB6E91CB3CB7A007FCCE6 /* Lato-Bold.ttf */; };
 		F9CF17D81CC4B86200ED2E8E /* M2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CF17D61CC4B86200ED2E8E /* M2API.swift */; };
 		F9CF17D91CC4B86200ED2E8E /* ActionItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CF17D71CC4B86200ED2E8E /* ActionItems.swift */; };
+		F9E26FEF1CC61EB70024F967 /* ActionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */; };
+		F9E26FF11CC61EBD0024F967 /* IssueViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E26FF01CC61EBD0024F967 /* IssueViewVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		F9CAB6E91CB3CB7A007FCCE6 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		F9CF17D61CC4B86200ED2E8E /* M2API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M2API.swift; sourceTree = "<group>"; };
 		F9CF17D71CC4B86200ED2E8E /* ActionItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionItems.swift; sourceTree = "<group>"; };
+		F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewVC.swift; sourceTree = "<group>"; };
+		F9E26FF01CC61EBD0024F967 /* IssueViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				F9CAB6E01CB3B657007FCCE6 /* sampleData.swift */,
 				F9CAB6DC1CB3B517007FCCE6 /* ApproveActionTVC.swift */,
 				F973A3FA1CB61043002BA523 /* Main.storyboard */,
+				F9E26FF01CC61EBD0024F967 /* IssueViewVC.swift */,
+				F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */,
 				F9CF17D61CC4B86200ED2E8E /* M2API.swift */,
 				F9CF17D71CC4B86200ED2E8E /* ActionItems.swift */,
 				F9CAB6D11CB3AB23007FCCE6 /* Assets.xcassets */,
@@ -223,12 +229,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9CAB6DD1CB3B517007FCCE6 /* ApproveActionTVC.swift in Sources */,
+				F9E26FF11CC61EBD0024F967 /* IssueViewVC.swift in Sources */,
 				F9CAB6DF1CB3B57D007FCCE6 /* ApproveAction.swift in Sources */,
 				E9F13B221CC60787009C4B8C /* ActionElement.swift in Sources */,
 				F9CF17D91CC4B86200ED2E8E /* ActionItems.swift in Sources */,
 				F9CAB6CB1CB3AB23007FCCE6 /* AppDelegate.swift in Sources */,
 				E98193B61CC4E37D00298CD8 /* HttpCall.swift in Sources */,
 				F9CAB6E11CB3B657007FCCE6 /* sampleData.swift in Sources */,
+				F9E26FEF1CC61EB70024F967 /* ActionViewVC.swift in Sources */,
 				F9CF17D81CC4B86200ED2E8E /* M2API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

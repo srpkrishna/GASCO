@@ -11,33 +11,35 @@ import Foundation
 
 class ActionItems {
     
-    let session: NSURLSession = {
-        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-        config.HTTPAdditionalHeaders = ["Authorization":"M2"]
-        return NSURLSession(configuration: config)
-    }()
+    var actionItems:[ActionElement] = [ActionElement]()
     
-    func handShake() {
-        let handShakeURL = m2API.handShakeURL()
-        let request = NSURLRequest(URL: handShakeURL)
-        
-        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
-            
-            if let jsonData = data {
-                if let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding){
-                    print(jsonString)
-                }
-            }
-            else if let requestError = error {
-                print(" Request Error While HandShaking = \(requestError)")
-            }
-            else {
-                print("UnExpected Error While HandShaking")
-            }
-            
-        }
-        task.resume()
-    }
+    //    let session: NSURLSession = {
+    //        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+    //        config.HTTPAdditionalHeaders = ["Authorization":"M2"]
+    //        return NSURLSession(configuration: config)
+    //    }()
+    //
+    //    func handShake() {
+    //        let handShakeURL = m2API.handShakeURL()
+    //        let request = NSURLRequest(URL: handShakeURL)
+    //
+    //        let task = session.dataTaskWithRequest(request) { (data, response, error) -> Void in
+    //
+    //            if let jsonData = data {
+    //                if let jsonString = NSString(data: jsonData, encoding: NSUTF8StringEncoding){
+    //                    print(jsonString)
+    //                }
+    //            }
+    //            else if let requestError = error {
+    //                print(" Request Error While HandShaking = \(requestError)")
+    //            }
+    //            else {
+    //                print("UnExpected Error While HandShaking")
+    //            }
+    //
+    //        }
+    //        task.resume()
+    //    }
     
     func fetchReport() {
         let reportURL = m2API.actionItemsDataUrl()
@@ -45,7 +47,7 @@ class ActionItems {
         request.HTTPMethod = "POST";
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-    
+        
         do
         {
             if let path = NSBundle.mainBundle().pathForResource("input", ofType: "json")
@@ -56,7 +58,7 @@ class ActionItems {
                     request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(jsonDict!,options:NSJSONWritingOptions.init(rawValue: 0))
                 }
             }
-
+            
         }catch let error as NSError {
             // error handling
             NSLog("error %@", error.description);
@@ -75,14 +77,14 @@ class ActionItems {
                 {
                     content = NSMutableDictionary.init(dictionary: contents);
                 }
-
+                
             }
             catch let error as NSError {
                 // error handling
                 NSLog("error %@", error.description);
             }
             
-            var actionItems:[ActionElement] = [ActionElement]()
+//            var actionItems:[ActionElement] = [ActionElement]()
             if let rows:NSArray = content!["rows"]as? NSArray
             {
                 for obj : AnyObject in rows {
@@ -111,7 +113,7 @@ class ActionItems {
                         }
                         
                         let act:ActionElement = ActionElement.init(id: cell["ACTION_ID"]!, title: cell["ACTION_TITLE"]!, taskId: cell["TASK_ID"]!, props: cell);
-                        actionItems.append(act);
+                        self.actionItems.append(act);
                     }
                 }
             }
