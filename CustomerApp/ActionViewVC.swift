@@ -137,7 +137,15 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 //self.tableView.reloadData()
+                ACTION_TITLE
+                ISSUE_TITLE
                 
+                ACTION_OWNER
+                ACTION_APPROVER1
+                ACTION_DETAILS
+                ACTION_START_DATE
+                ACTION_DUE_DATE
+                ACTION_WORK_DONE
             })
             
         }
