@@ -12,6 +12,7 @@ import UIKit
 
 class ActionViewVC: UIViewController, UITabBarDelegate {
     
+    var actionElement: ActionElement?
     
     @IBOutlet weak var navApproveRequestTitle: UINavigationItem!
     

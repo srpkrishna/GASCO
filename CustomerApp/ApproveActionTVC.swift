@@ -128,6 +128,12 @@ class ApproveActionTVC: UITableViewController {
     }
     */
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let actionView:ActionViewVC  = ActionViewVC.init();
+        actionView.actionElement = self.tempActionItems[indexPath.row];
+        self.navigationController?.pushViewController(actionView, animated: true);
+    }
+    
     func fetchReport() {
         let reportURL = m2API.actionItemsDataUrl()
         let request = NSMutableURLRequest(URL: reportURL)
