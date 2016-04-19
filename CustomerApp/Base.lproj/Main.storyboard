@@ -380,7 +380,6 @@
                         <outlet property="requestClarification" destination="xxs-OD-DV9" id="eBy-fX-0ht"/>
                         <outlet property="scrollView" destination="0Gn-8G-R1u" id="V4r-rc-9Tz"/>
                         <outlet property="workDoneTextView" destination="iVg-cj-0lj" id="iwJ-G4-mv0"/>
-                        <segue destination="LT3-me-KBj" kind="show" identifier="IssueVCSegue" id="M0A-lC-C2A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GR3-cA-QVx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -530,6 +529,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Issue VC" id="t4N-dR-oMl"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="commentTextView" destination="aPE-kb-VUv" id="NxQ-ls-L1y"/>
                         <outlet property="issueDescriptionTextView" destination="OBN-72-WeV" id="1ZP-TG-Vh9"/>
@@ -539,7 +539,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OZh-59-huP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1558.5" y="-1416.5"/>
+            <point key="canvasLocation" x="1540.5" y="-1416.5"/>
         </scene>
         <!--EntryPoint -->
         <scene sceneID="lS3-DM-L86">
