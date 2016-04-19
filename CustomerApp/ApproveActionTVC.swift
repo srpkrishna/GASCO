@@ -13,8 +13,7 @@ class ApproveActionTVC: UITableViewController {
     var approveActionItems:[ApproveAction] = approveActionData
     
     var tempActionItems:[ActionElement] = [ActionElement]()
-    
-    var actionItems: ActionItems!
+
     
     @IBOutlet weak var approveActionTitle: UINavigationItem!
     
@@ -24,12 +23,7 @@ class ApproveActionTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        actionItems = ActionItems()
-        
-        
-        
-        
+   
         self.fetchReport()
         
         let navBarColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
@@ -129,9 +123,10 @@ class ApproveActionTVC: UITableViewController {
     */
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let actionView:ActionViewVC  = ActionViewVC.init();
-        actionView.actionElement = self.tempActionItems[indexPath.row];
-        self.navigationController?.pushViewController(actionView, animated: true);
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let myController:ActionViewVC = storyboard.instantiateViewControllerWithIdentifier("ActionIssue") as! ActionViewVC
+        myController.actionElement = self.tempActionItems[indexPath.row];
+        self.navigationController?.pushViewController(myController, animated: true);
     }
     
     func fetchReport() {
