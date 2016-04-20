@@ -13,7 +13,6 @@ import UIKit
 class ActionViewVC: UIViewController, UITabBarDelegate {
     
     var actionElement: ActionElement?
-    var content:NSMutableDictionary?
     var jsonDict:NSMutableDictionary?
     
     @IBOutlet weak var navApproveRequestTitle: UINavigationItem!
@@ -79,7 +78,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         self.scrollView.scrollEnabled = true
         self.scrollView.pagingEnabled = true
         
-       let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
+       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ActionViewVC.navigateToIssueVC(_:)))
         self.IssueStackView.addGestureRecognizer(tapGesture)
         ApproveRequestTabBar.delegate = self
         
@@ -111,7 +110,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
     func navigateToIssueVC(sender:UITapGestureRecognizer){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let myController:IssueViewVC = storyboard.instantiateViewControllerWithIdentifier("IssueViewVC") as! IssueViewVC
-        myController.content = self.content;
+        myController.jsonDict = self.jsonDict;
         self.navigationController?.pushViewController(myController, animated: true);
 
         
@@ -127,14 +126,26 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         let serverCall = HttpCall.init();
         serverCall.getData(request){(data) -> Void in
         
-            
+            var content:NSMutableDictionary?
+            var structure:NSMutableDictionary?
+            var resources:NSMutableDictionary?
             do
             {
                  self.jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
                 
                 if let contents = self.jsonDict!["content"] as? NSDictionary
                 {
-                    self.content = NSMutableDictionary.init(dictionary: contents);
+                    content = NSMutableDictionary.init(dictionary: contents);
+                }
+                
+                if let structs  = self.jsonDict!["structure"] as? NSDictionary
+                {
+                    structure = NSMutableDictionary.init(dictionary: structs);
+                }
+
+                if let resource  = self.jsonDict!["resources"] as? NSDictionary
+                {
+                    resources = NSMutableDictionary.init(dictionary: resource);
                 }
                 
             }
@@ -146,15 +157,78 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 //self.tableView.reloadData()
-                ACTION_TITLE
-                ISSUE_TITLE
                 
-                ACTION_OWNER
-                ACTION_APPROVER1
-                ACTION_DETAILS
-                ACTION_START_DATE
-                ACTION_DUE_DATE
-                ACTION_WORK_DONE
+
+                self.actionTitle.text = self.actionElement?.title;
+                
+                if let Obj = content!["ISSUE_TITLE"] as? NSDictionary
+                {
+                    self.issueTitle.text = Obj["value"] as? String;
+    
+                }
+                
+                if let obj = content!["ACTION_OWNER"] as? NSDictionary
+                {
+                    let user = obj["value"] as? String;
+                    
+                    if let users = resources!["MS_ISM_Users_All_12"] as? NSDictionary
+                    {
+                        self.actionOwner.text = users[user!] as? String;
+                    }
+                    
+                    
+                }
+                
+                if let obj = content!["ACTION_APPROVER1"] as? NSDictionary
+                {
+                    let user = obj["value"] as? String;
+                    
+                    if let users = resources!["MS_ISM_Users_All_13"] as? NSDictionary
+                    {
+                        self.dummyName.text = users[user!] as? String;
+                    }
+                    
+                    
+                }
+                
+                if let obj = content!["ACTION_DETAILS"] as? NSDictionary
+                {
+                    
+                    if let actDetails:String = obj["value"] as? String
+                    {
+                        self.actionDescriptionTextView.text = actDetails;
+                    }
+                    
+                }
+                
+                if let Obj = content!["ACTION_START_DATE"] as? NSDictionary
+                {
+                    if let date:String = Obj["value"] as? String
+                    {
+                        //self.actionStartDate.text = date;
+                    }
+                    
+                }
+                
+                if let Obj = content!["ACTION_DUE_DATE"] as? NSDictionary
+                {
+                    //self.actionDueDate.text = Obj["value"] as? String;
+                    
+                }
+                
+                if let Obj = content!["ACTION_WORK_DONE"] as? NSDictionary
+                {
+                    self.workDoneTextView.text = Obj["value"] as? String;
+                    
+                }
+        
+                
+//                ACTION_OWNER
+//                ACTION_APPROVER1
+//                ACTION_DETAILS
+//                ACTION_START_DATE
+//                ACTION_DUE_DATE
+//                ACTION_WORK_DONE
             })
             
         }
