@@ -8,14 +8,17 @@
 
 import UIKit
 
-class IssueViewVC: UIViewController {
+class IssueViewVC: UIViewController, UITextViewDelegate {
 
-    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var issueVCNavigationItem: UINavigationItem!
     
     
-
+    @IBOutlet weak var approveRequestTabBar: UITabBar!
+    @IBOutlet weak var approveActionTabBarItem: UITabBarItem!
+    
+    @IBOutlet weak var requestClarification: UITabBarItem!
+    
     @IBOutlet weak var issueLabel: UILabel!
     
     let navTitleFont = UIFont(name: "Lato-Black", size: 18)
@@ -32,7 +35,6 @@ class IssueViewVC: UIViewController {
     @IBOutlet weak var issueDescriptionTextView: UITextView!
     @IBOutlet weak var sourceType: UILabel!
     @IBOutlet weak var IssueRiskRating: UILabel!
-    @IBOutlet weak var commentTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,18 +45,17 @@ class IssueViewVC: UIViewController {
         print(self.navigationController?.navigationBar.items?.first?.backBarButtonItem?.title)
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navTitleFont!, NSForegroundColorAttributeName: navigationBarTitleColor]
         self.navigationController?.navigationBar.tintColor = navigationBarTitleColor
-    
-        self.scrollView.contentSize = CGSize(width: self.view.frame.width - 20, height: self.view.frame.height - 30 )
-        self.scrollView.scrollEnabled = true
-        self.scrollView.pagingEnabled = true
         
-        self.commentTextView.layer.borderWidth = CGFloat(1.0)
-        self.commentTextView.layer.borderColor = UIColor.grayColor().CGColor
-        self.commentTextView.layer.cornerRadius = CGFloat(5.0)
-        
+        let dismissKeyBoard = UITapGestureRecognizer(target: self, action: "dismissKeyBoardOnTapofView:")
+        self.view.addGestureRecognizer(dismissKeyBoard)
+
+        self.issueDescriptionTextView.delegate = self
         self.issueDescriptionTextView.layer.borderWidth = CGFloat(1.0)
         self.issueDescriptionTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.issueDescriptionTextView.layer.cornerRadius = CGFloat(5.0)
+        
+        requestClarification.titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
+        approveActionTabBarItem.titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
 
 //        self.issueLabel.font = navTitleFont
         
@@ -117,10 +118,23 @@ class IssueViewVC: UIViewController {
         
     
     }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func dismissKeyBoardOnTapofView(sender:UITapGestureRecognizer){
+        self.view.endEditing(true)
     }
     
 //    func keyboardWillShow(notification: NSNotification) {

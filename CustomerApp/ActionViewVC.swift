@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ActionViewVC: UIViewController, UITabBarDelegate {
+class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     var actionElement: ActionElement?
     var jsonDict:NSMutableDictionary?
@@ -75,34 +75,44 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
                 NSForegroundColorAttributeName: tabBarItemColor],
             forState: .Normal)
         
-        /* Scroll View Setting*/
-//        self.scrollView.contentSize = CGSize(width: self.view.frame.width - 20, height: (self.view.frame.height * 2))
         self.scrollView.scrollEnabled = true
         self.scrollView.pagingEnabled = true
+        
+        let dismissKeyBoard = UITapGestureRecognizer(target: self, action: "dismissKeyBoardOnTapofView:")
+        self.view.addGestureRecognizer(dismissKeyBoard)
         
        let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
         self.IssueStackView.addGestureRecognizer(tapGesture)
         ApproveRequestTabBar.delegate = self
         
+        self.actionDescriptionTextView.delegate = self
         self.actionDescriptionTextView.layer.borderWidth = CGFloat(1.0)
         self.actionDescriptionTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.actionDescriptionTextView.layer.cornerRadius = CGFloat(5.0)
         
+        self.workDoneTextView.delegate = self
         self.workDoneTextView.layer.borderWidth = CGFloat(1.0)
         self.workDoneTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.workDoneTextView.layer.cornerRadius = CGFloat(5.0)
         
+        self.commentsTextView.delegate = self
         self.commentsTextView.layer.borderWidth = CGFloat(1.0)
         self.commentsTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.commentsTextView.layer.cornerRadius = CGFloat(5.0)
         
-        self.downloadAllButton.layer.cornerRadius = CGFloat(15.0)
         
         self.actionImplementation.font = highLightedLabelFont
-        self.attachments.font = highLightedLabelFont
         self.issueLabel.font = highLightedLabelFont
         
         getForm();
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
     
     deinit{
@@ -116,6 +126,10 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         self.navigationController?.pushViewController(myController, animated: true);
 
         
+    }
+    
+    func dismissKeyBoardOnTapofView(sender:UITapGestureRecognizer){
+        self.view.endEditing(true)
     }
     
     func getForm(){
