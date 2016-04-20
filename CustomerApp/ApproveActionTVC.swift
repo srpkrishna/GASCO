@@ -124,7 +124,7 @@ class ApproveActionTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let myController:ActionViewVC = storyboard.instantiateViewControllerWithIdentifier("ActionIssue") as! ActionViewVC
+        let myController:ActionViewVC   = storyboard.instantiateViewControllerWithIdentifier("ActionViewVC") as! ActionViewVC
         myController.actionElement = self.tempActionItems[indexPath.row];
         self.navigationController?.pushViewController(myController, animated: true);
     }

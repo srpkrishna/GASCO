@@ -56,7 +56,7 @@ class IssueViewVC: UIViewController {
         self.issueDescriptionTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.issueDescriptionTextView.layer.cornerRadius = CGFloat(5.0)
 
-        self.issueLabel.font = navTitleFont
+//        self.issueLabel.font = navTitleFont
         
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)

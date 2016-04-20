@@ -46,7 +46,9 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
     @IBOutlet weak var issueTitle: UILabel!
     @IBOutlet weak var actionOwnerOrganization: UILabel!
     @IBOutlet weak var actionOwner: UILabel!
-    @IBOutlet weak var dummyName: UILabel!
+    @IBOutlet weak var actionApprover: UILabel!
+    
+    
     @IBOutlet weak var actionDescriptionTextView: UITextView!
     @IBOutlet weak var actionStartDate: UILabel!
     @IBOutlet weak var actionDueDate: UILabel!
@@ -74,11 +76,11 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
             forState: .Normal)
         
         /* Scroll View Setting*/
-        self.scrollView.contentSize = CGSize(width: self.view.frame.width - 20, height: (self.view.frame.height * 2))
+//        self.scrollView.contentSize = CGSize(width: self.view.frame.width - 20, height: (self.view.frame.height * 2))
         self.scrollView.scrollEnabled = true
         self.scrollView.pagingEnabled = true
         
-       let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ActionViewVC.navigateToIssueVC(_:)))
+       let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
         self.IssueStackView.addGestureRecognizer(tapGesture)
         ApproveRequestTabBar.delegate = self
         
@@ -127,7 +129,6 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         serverCall.getData(request){(data) -> Void in
         
             var content:NSMutableDictionary?
-            var structure:NSMutableDictionary?
             var resources:NSMutableDictionary?
             do
             {
@@ -137,12 +138,6 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
                 {
                     content = NSMutableDictionary.init(dictionary: contents);
                 }
-                
-                if let structs  = self.jsonDict!["structure"] as? NSDictionary
-                {
-                    structure = NSMutableDictionary.init(dictionary: structs);
-                }
-
                 if let resource  = self.jsonDict!["resources"] as? NSDictionary
                 {
                     resources = NSMutableDictionary.init(dictionary: resource);
@@ -185,7 +180,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
                     
                     if let users = resources!["MS_ISM_Users_All_13"] as? NSDictionary
                     {
-                        self.dummyName.text = users[user!] as? String;
+                        self.actionApprover.text = users[user!] as? String;
                     }
                     
                     
@@ -205,14 +200,14 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
                 {
                     if let date:String = Obj["value"] as? String
                     {
-                        //self.actionStartDate.text = date;
+                        self.actionStartDate.text = date;
                     }
                     
                 }
                 
                 if let Obj = content!["ACTION_DUE_DATE"] as? NSDictionary
                 {
-                    //self.actionDueDate.text = Obj["value"] as? String;
+                    self.actionDueDate.text = Obj["value"] as? String;
                     
                 }
                 
