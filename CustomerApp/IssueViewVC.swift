@@ -62,17 +62,11 @@ class IssueViewVC: UIViewController {
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
         var content:NSMutableDictionary?
-        var structure:NSMutableDictionary?
         var resources:NSMutableDictionary?
         
         if let contents = self.jsonDict!["content"] as? NSDictionary
         {
             content = NSMutableDictionary.init(dictionary: contents);
-        }
-        
-        if let structs  = self.jsonDict!["structure"] as? NSDictionary
-        {
-            structure = NSMutableDictionary.init(dictionary: structs);
         }
         
         if let resource  = self.jsonDict!["resources"] as? NSDictionary
@@ -99,18 +93,25 @@ class IssueViewVC: UIViewController {
             
             if let sourceTypes = resources!["MS 001 ISM Common LOV Infolet_26"] as? NSDictionary
             {
-                self.sourceType.text = sourceTypes[source!] as? String;
+                if let valObj = sourceTypes[source!] as? NSDictionary
+                {
+                    self.sourceType.text = valObj["value"] as? String;
+                }
+                
             }
             
         }
         
         if let obj = content!["ISSUE_OWNER"] as? NSDictionary
         {
-            let source = obj["value"] as? String;
+            let user = obj["value"] as? String;
             
-            if let sourceTypes = resources!["MS_ISM_Users_All_12"] as? NSDictionary
+            if let users = resources!["MS_ISM_Users_All_12"] as? NSDictionary
             {
-                self.issueOwner.text = sourceTypes[source!] as? String;
+                if let valObj = users[user!] as? NSDictionary
+                {
+                    self.issueOwner.text = valObj["value"] as? String;
+                }
             }
             
         }

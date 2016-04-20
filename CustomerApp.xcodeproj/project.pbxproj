@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90F2D8D1CC78F0D00FA5A4B /* LoadingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90F2D8C1CC78F0D00FA5A4B /* LoadingScreen.swift */; };
 		E98193B61CC4E37D00298CD8 /* HttpCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98193B51CC4E37D00298CD8 /* HttpCall.swift */; };
 		E9F13B201CC5EF1D009C4B8C /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = E9F13B1F1CC5EF1D009C4B8C /* input.json */; };
 		E9F13B221CC60787009C4B8C /* ActionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F13B211CC60787009C4B8C /* ActionElement.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E90F2D8C1CC78F0D00FA5A4B /* LoadingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingScreen.swift; sourceTree = "<group>"; };
 		E98193B51CC4E37D00298CD8 /* HttpCall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpCall.swift; sourceTree = "<group>"; };
 		E9F13B1F1CC5EF1D009C4B8C /* input.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = input.json; sourceTree = "<group>"; };
 		E9F13B211CC60787009C4B8C /* ActionElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionElement.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				F9E26FF01CC61EBD0024F967 /* IssueViewVC.swift */,
 				F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */,
 				F90A1B941CC74D2B003602FE /* ActionViewViewController.swift */,
+				E90F2D8C1CC78F0D00FA5A4B /* LoadingScreen.swift */,
 				F9CF17D61CC4B86200ED2E8E /* M2API.swift */,
 				F9CAB6D11CB3AB23007FCCE6 /* Assets.xcassets */,
 				F9CAB6E81CB3CB7A007FCCE6 /* Lato-Black.ttf */,
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9CAB6DD1CB3B517007FCCE6 /* ApproveActionTVC.swift in Sources */,
+				E90F2D8D1CC78F0D00FA5A4B /* LoadingScreen.swift in Sources */,
 				F9E26FF11CC61EBD0024F967 /* IssueViewVC.swift in Sources */,
 				F9CAB6DF1CB3B57D007FCCE6 /* ApproveAction.swift in Sources */,
 				F90A1B951CC74D2B003602FE /* ActionViewViewController.swift in Sources */,

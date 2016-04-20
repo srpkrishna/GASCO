@@ -14,6 +14,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
     
     var actionElement: ActionElement?
     var jsonDict:NSMutableDictionary?
+    let loader = LoadingScreen.init();
     
     @IBOutlet weak var navApproveRequestTitle: UINavigationItem!
     
@@ -103,6 +104,101 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         self.issueLabel.font = highLightedLabelFont
         
         getForm();
+        
+        ApproveRequestTabBar.delegate = self;
+    }
+    
+    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        
+        
+        let putData = self.jsonDict!.mutableCopy()
+        let contents = putData["content"] as? NSMutableDictionary
+        
+        let dict = putData as! NSMutableDictionary;
+        let content = contents?.mutableCopy();
+
+        
+        
+        if let Obj = content!["ACTION_COMMENTS"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            let val = self.commentsTextView.text;
+            object.setObject(val, forKey: "value")
+            content?.setObject(object, forKey: "ACTION_COMMENTS");
+        }
+        
+        
+        var actionValue = "39";
+        
+        if(item == requestClarification)
+        {
+            actionValue = "40";
+        }
+        
+        
+        if let Obj = content!["ACT_ACTION"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            object.setObject(actionValue, forKey: "value")
+            content?.setObject(object, forKey: "ACT_ACTION");
+        }
+        
+        
+        dict.setObject(content!, forKey: "content");
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let myController:IssueViewVC = storyboard.instantiateViewControllerWithIdentifier("IssueViewVC") as! IssueViewVC
+//    
+        
+        let reportURL = m2API.actionSubmitUrl(actionElement!.taskId,queryparams: "?action=submit&offline=no")
+        let request = NSMutableURLRequest(URL: reportURL)
+        request.HTTPMethod = "PUT";
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        do
+        {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(dict,options:NSJSONWritingOptions.init(rawValue: 0))
+            let string1 = NSString(data: request.HTTPBody!, encoding: NSUTF8StringEncoding)
+            print(string1)
+            
+        }catch let error as NSError {
+            // error handling
+            NSLog("error %@", error.description);
+        }
+        
+        loader.showLoading();
+        
+        let serverCall = HttpCall.init();
+        serverCall.getData(request){(data,error) -> Void in
+            
+            if(error != "")
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.loader.hideLoading()
+                })
+                return
+            }
+            
+             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                
+                let alert = UIAlertController(title: "Alert", message: "Action submitted successfully ", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default){
+                        action in
+                    
+                        self.navigationController?.popToRootViewControllerAnimated(true);
+                        self.loader.hideLoading();
+                    })
+                
+                
+            })
+
+        }
+        
     }
     
     deinit{
@@ -126,13 +222,28 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         
         let serverCall = HttpCall.init();
-        serverCall.getData(request){(data) -> Void in
+        loader.showLoading();
+        serverCall.getData(request){(data,error) -> Void in
         
+            
+            if(error != "")
+            {
+                
+                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                        self.loader.hideLoading()
+                    })
+                return
+            }
+            
             var content:NSMutableDictionary?
             var resources:NSMutableDictionary?
+            
             do
             {
-                 self.jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
+                 self.jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
                 
                 if let contents = self.jsonDict!["content"] as? NSDictionary
                 {
@@ -168,7 +279,10 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
                     
                     if let users = resources!["MS_ISM_Users_All_12"] as? NSDictionary
                     {
-                        self.actionOwner.text = users[user!] as? String;
+                        if let valObj = users[user!] as? NSDictionary
+                        {
+                            self.actionOwner.text = valObj["value"] as? String;
+                        }
                     }
                     
                     
@@ -180,7 +294,10 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
                     
                     if let users = resources!["MS_ISM_Users_All_13"] as? NSDictionary
                     {
-                        self.actionApprover.text = users[user!] as? String;
+                        if let valObj = users[user!] as? NSDictionary
+                        {
+                            self.actionApprover.text = valObj["value"] as? String;
+                        }
                     }
                     
                     
@@ -216,7 +333,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate {
                     self.workDoneTextView.text = Obj["value"] as? String;
                     
                 }
-        
+                self.loader.hideLoading();
                 
 //                ACTION_OWNER
 //                ACTION_APPROVER1

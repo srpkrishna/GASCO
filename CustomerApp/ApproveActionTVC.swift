@@ -13,18 +13,16 @@ class ApproveActionTVC: UITableViewController {
     var approveActionItems:[ApproveAction] = approveActionData
     
     var tempActionItems:[ActionElement] = [ActionElement]()
-
     
     @IBOutlet weak var approveActionTitle: UINavigationItem!
     
     let navTitleFont = UIFont(name: "Lato-black", size: 18)
     
-    
+    let loader = LoadingScreen.init();
 
     override func viewDidLoad() {
         super.viewDidLoad()
    
-        self.fetchReport()
         
         let navBarColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
         let navTitleColor = UIColor(red: 0.078, green: 0.451, blue: 0.749, alpha: 1.00)
@@ -44,6 +42,10 @@ class ApproveActionTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated);
+        self.fetchReport()
+    }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -130,6 +132,8 @@ class ApproveActionTVC: UITableViewController {
     }
     
     func fetchReport() {
+        
+        loader.showLoading();
         let reportURL = m2API.actionItemsDataUrl()
         let request = NSMutableURLRequest(URL: reportURL)
         request.HTTPMethod = "POST";
@@ -153,13 +157,25 @@ class ApproveActionTVC: UITableViewController {
         }
         
         let serverCall = HttpCall.init();
-        serverCall.getData(request){(data) -> Void in
+        serverCall.getData(request){(data,error) -> Void in
             
             var content:NSMutableDictionary?
             
+            if(error != "")
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.loader.hideLoading()
+                })
+                return
+            }
+            
             do
             {
-                let jsonDict = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
+                let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
                 
                 if let contents = jsonDict!["content"] as? NSDictionary
                 {
@@ -208,8 +224,8 @@ class ApproveActionTVC: UITableViewController {
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.tableView.reloadData()
+                self.loader.hideLoading();
             })
-            
         }
         
         
