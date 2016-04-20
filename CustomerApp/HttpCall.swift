@@ -17,7 +17,8 @@ class HttpCall
     
     
     func getData(urlRequest:NSMutableURLRequest,completion: funType){
-        
+        config.timeoutIntervalForRequest = 30.0;
+        config.timeoutIntervalForResource = 30.0;
         config.HTTPAdditionalHeaders = ["Authorization" : "M2"];
         let datatask = session.dataTaskWithRequest(urlRequest) { (data, response, error) -> Void in
             
