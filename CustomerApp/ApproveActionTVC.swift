@@ -35,6 +35,8 @@ class ApproveActionTVC: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        self.fetchReport()
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,7 +46,6 @@ class ApproveActionTVC: UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated);
-        self.fetchReport()
     }
     // MARK: - Table view data source
 

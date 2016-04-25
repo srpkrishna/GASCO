@@ -35,7 +35,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     let highLightedLabelFont = UIFont(name: "Lato-Bold", size: 16)
     
     
-    @IBOutlet weak var actionImplementation: UILabel!
+    @IBOutlet weak var actionImplementationUIUnderLineLabel: UnderLineUILabel!
     @IBOutlet weak var attachments: UILabel!
 
     @IBOutlet weak var issueLabel: UILabel!
@@ -102,7 +102,8 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.commentsTextView.layer.cornerRadius = CGFloat(5.0)
         
         
-        self.actionImplementation.font = highLightedLabelFont
+        self.actionImplementationUIUnderLineLabel.font = highLightedLabelFont
+        self.actionImplementationUIUnderLineLabel.text = self.actionImplementationUIUnderLineLabel.text
         self.issueLabel.font = highLightedLabelFont
         
         getForm();
@@ -148,9 +149,9 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
         dict.setObject(content!, forKey: "content");
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let myController:IssueViewVC = storyboard.instantiateViewControllerWithIdentifier("IssueViewVC") as! IssueViewVC
-//    
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let myController:IssueViewVC = storyboard.instantiateViewControllerWithIdentifier("IssueViewVC") as! IssueViewVC
+    
         
         let reportURL = m2API.actionSubmitUrl(actionElement!.taskId,queryparams: "?action=submit&offline=no")
         let request = NSMutableURLRequest(URL: reportURL)
