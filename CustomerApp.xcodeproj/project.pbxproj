@@ -13,6 +13,17 @@
 		E9F13B221CC60787009C4B8C /* ActionElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F13B211CC60787009C4B8C /* ActionElement.swift */; };
 		F90A1B951CC74D2B003602FE /* ActionViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F90A1B941CC74D2B003602FE /* ActionViewViewController.swift */; };
 		F949244F1CCF6EA800C28A7D /* gascoLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = F949244E1CCF6EA800C28A7D /* gascoLogo.png */; };
+		F949245C1CCF86A000C28A7D /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924511CCF86A000C28A7D /* Icon-40.png */; };
+		F949245D1CCF86A000C28A7D /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924521CCF86A000C28A7D /* Icon-40@2x.png */; };
+		F949245E1CCF86A000C28A7D /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924531CCF86A000C28A7D /* Icon-40@3x.png */; };
+		F949245F1CCF86A000C28A7D /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924541CCF86A000C28A7D /* Icon-60@2x.png */; };
+		F94924601CCF86A000C28A7D /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924551CCF86A000C28A7D /* Icon-60@3x.png */; };
+		F94924611CCF86A000C28A7D /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924561CCF86A000C28A7D /* Icon-76.png */; };
+		F94924621CCF86A000C28A7D /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924571CCF86A000C28A7D /* Icon-76@2x.png */; };
+		F94924631CCF86A000C28A7D /* Icon-83.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924581CCF86A000C28A7D /* Icon-83.5@2x.png */; };
+		F94924641CCF86A000C28A7D /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = F94924591CCF86A000C28A7D /* Icon-Small.png */; };
+		F94924651CCF86A000C28A7D /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F949245A1CCF86A000C28A7D /* Icon-Small@2x.png */; };
+		F94924661CCF86A000C28A7D /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F949245B1CCF86A000C28A7D /* Icon-Small@3x.png */; };
 		F95FF47F1CCC94FD002BA260 /* UnderLineUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FF47E1CCC94FD002BA260 /* UnderLineUILabel.swift */; };
 		F973A3FC1CB61043002BA523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F973A3FA1CB61043002BA523 /* Main.storyboard */; };
 		F9CAB6CB1CB3AB23007FCCE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAB6CA1CB3AB23007FCCE6 /* AppDelegate.swift */; };
@@ -36,6 +47,17 @@
 		E9F13B211CC60787009C4B8C /* ActionElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionElement.swift; sourceTree = "<group>"; };
 		F90A1B941CC74D2B003602FE /* ActionViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewViewController.swift; sourceTree = "<group>"; };
 		F949244E1CCF6EA800C28A7D /* gascoLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gascoLogo.png; sourceTree = "<group>"; };
+		F94924511CCF86A000C28A7D /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40.png"; sourceTree = "<group>"; };
+		F94924521CCF86A000C28A7D /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@2x.png"; sourceTree = "<group>"; };
+		F94924531CCF86A000C28A7D /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-40@3x.png"; sourceTree = "<group>"; };
+		F94924541CCF86A000C28A7D /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
+		F94924551CCF86A000C28A7D /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@3x.png"; sourceTree = "<group>"; };
+		F94924561CCF86A000C28A7D /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
+		F94924571CCF86A000C28A7D /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76@2x.png"; sourceTree = "<group>"; };
+		F94924581CCF86A000C28A7D /* Icon-83.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-83.5@2x.png"; sourceTree = "<group>"; };
+		F94924591CCF86A000C28A7D /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small.png"; sourceTree = "<group>"; };
+		F949245A1CCF86A000C28A7D /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@2x.png"; sourceTree = "<group>"; };
+		F949245B1CCF86A000C28A7D /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		F95FF47E1CCC94FD002BA260 /* UnderLineUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderLineUILabel.swift; sourceTree = "<group>"; };
 		F973A3FB1CB61043002BA523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CustomerApp/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F9CAB6C71CB3AB23007FCCE6 /* CustomerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +87,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F94924501CCF868B00C28A7D /* App Icon */ = {
+			isa = PBXGroup;
+			children = (
+				F94924511CCF86A000C28A7D /* Icon-40.png */,
+				F94924521CCF86A000C28A7D /* Icon-40@2x.png */,
+				F94924531CCF86A000C28A7D /* Icon-40@3x.png */,
+				F94924541CCF86A000C28A7D /* Icon-60@2x.png */,
+				F94924551CCF86A000C28A7D /* Icon-60@3x.png */,
+				F94924561CCF86A000C28A7D /* Icon-76.png */,
+				F94924571CCF86A000C28A7D /* Icon-76@2x.png */,
+				F94924581CCF86A000C28A7D /* Icon-83.5@2x.png */,
+				F94924591CCF86A000C28A7D /* Icon-Small.png */,
+				F949245A1CCF86A000C28A7D /* Icon-Small@2x.png */,
+				F949245B1CCF86A000C28A7D /* Icon-Small@3x.png */,
+			);
+			name = "App Icon";
+			sourceTree = "<group>";
+		};
 		F9CAB6BE1CB3AB23007FCCE6 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +141,7 @@
 				E90F2D8C1CC78F0D00FA5A4B /* LoadingScreen.swift */,
 				F9CF17D61CC4B86200ED2E8E /* M2API.swift */,
 				F9CAB6D11CB3AB23007FCCE6 /* Assets.xcassets */,
+				F94924501CCF868B00C28A7D /* App Icon */,
 				F9CAB6E81CB3CB7A007FCCE6 /* Lato-Black.ttf */,
 				F9CAB6E91CB3CB7A007FCCE6 /* Lato-Bold.ttf */,
 				F949244E1CCF6EA800C28A7D /* gascoLogo.png */,
@@ -224,10 +265,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F94924641CCF86A000C28A7D /* Icon-Small.png in Resources */,
+				F94924601CCF86A000C28A7D /* Icon-60@3x.png in Resources */,
+				F94924611CCF86A000C28A7D /* Icon-76.png in Resources */,
+				F949245C1CCF86A000C28A7D /* Icon-40.png in Resources */,
+				F94924651CCF86A000C28A7D /* Icon-Small@2x.png in Resources */,
 				F973A3FC1CB61043002BA523 /* Main.storyboard in Resources */,
+				F94924621CCF86A000C28A7D /* Icon-76@2x.png in Resources */,
 				F949244F1CCF6EA800C28A7D /* gascoLogo.png in Resources */,
+				F949245D1CCF86A000C28A7D /* Icon-40@2x.png in Resources */,
+				F949245F1CCF86A000C28A7D /* Icon-60@2x.png in Resources */,
+				F949245E1CCF86A000C28A7D /* Icon-40@3x.png in Resources */,
 				E9F13B201CC5EF1D009C4B8C /* input.json in Resources */,
+				F94924661CCF86A000C28A7D /* Icon-Small@3x.png in Resources */,
 				F9CAB6EA1CB3CB7A007FCCE6 /* Lato-Black.ttf in Resources */,
+				F94924631CCF86A000C28A7D /* Icon-83.5@2x.png in Resources */,
 				F9CAB6EB1CB3CB7A007FCCE6 /* Lato-Bold.ttf in Resources */,
 				F9CAB6D51CB3AB23007FCCE6 /* LaunchScreen.storyboard in Resources */,
 				F9CAB6D21CB3AB23007FCCE6 /* Assets.xcassets in Resources */,
