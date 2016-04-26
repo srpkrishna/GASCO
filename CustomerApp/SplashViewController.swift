@@ -84,13 +84,6 @@ class SplashViewController: UIViewController
                 
         })
         
-        print("companyLastName.frame.origin.x = \(companyLastName.frame.origin.x)")
-        print("companyLastName.frame.origin.y = \(companyLastName.frame.origin.y)")
-        print("companyLastName.frame.size.width = \(companyLastName.frame.size.width)")
-        print("companyLastName.frame.size.height = \(companyLastName.frame.size.height)")
-        
-        
-        
         //Company Logo
         let companyLogoOrginX = companyLastName.frame.origin.x + companyLastName.frame.size.width + 5
         let companyLogoOriginY = companyLastName.frame.origin.y + companyLastName.frame.size.height - 5
@@ -100,9 +93,6 @@ class SplashViewController: UIViewController
         
         self.view.addSubview(self.comapnyLogo)
 
-        
-        
-        
         timer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: Selector("loadIntialViewOfTheApp"), userInfo: nil, repeats: false)
     }
     
