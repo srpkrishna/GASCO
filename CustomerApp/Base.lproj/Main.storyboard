@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fcR-9v-LQ8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1713" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="N7N-C8-GHJ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -81,10 +81,32 @@
             </objects>
             <point key="canvasLocation" x="621.5" y="-1416.5"/>
         </scene>
+        <!--Splash View Controller-->
+        <scene sceneID="1yS-oQ-Uli">
+            <objects>
+                <viewController id="N7N-C8-GHJ" customClass="SplashViewController" customModule="CustomerApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ydF-v9-gWg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lon-mW-6ox"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eRc-PB-y4H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="fcR-9v-LQ8" kind="show" id="eum-lo-r60"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i5A-iL-ASU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-331.5" y="-1416.5"/>
+        </scene>
         <!--EntryPoint -->
         <scene sceneID="lS3-DM-L86">
             <objects>
-                <navigationController title="EntryPoint " automaticallyAdjustsScrollViewInsets="NO" id="fcR-9v-LQ8" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="EntryNavigationBar" title="EntryPoint " automaticallyAdjustsScrollViewInsets="NO" id="fcR-9v-LQ8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3O4-B5-l1Y">
