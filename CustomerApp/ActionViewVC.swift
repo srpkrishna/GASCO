@@ -1,12 +1,10 @@
-//
+    //
 //  ApproveRequest.swift
 //  CustomerApp
 //
 //  Created by Ashok on 4/6/16.
 //  Copyright © 2016 Ashok. All rights reserved.
 //
-
-//http://stackoverflow.com/questions/19029833/ios-7-navigation-bar-text-and-arrow-color
 
 import UIKit
 
@@ -30,10 +28,11 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     let navigationBarColor =  UIColor(red: 255, green: 255, blue: 255, alpha: 1)
     let navigationBarTitleColor = UIColor(red: 0.078, green: 0.451, blue: 0.749, alpha: 1.00)
     
-    let tabBarItemColor = UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 1.00)
     
     let highLightedLabelFont = UIFont(name: "Lato-Bold", size: 16)
     
+    @IBOutlet weak var approveActionLabel: UILabel!
+    @IBOutlet weak var requestClarificationUILabel: UILabel!
     
     @IBOutlet weak var actionImplementationUIUnderLineLabel: UnderLineUILabel!
     @IBOutlet weak var attachments: UILabel!
@@ -63,18 +62,28 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-    
+        
+        self.approveActionLabel.font = highLightedLabelFont
+        self.requestClarificationUILabel.font = highLightedLabelFont
+        
+        let approveActionTap = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
+        approveActionTap.numberOfTapsRequired = 1
+        self.approveActionLabel.addGestureRecognizer(approveActionTap)
+        self.approveActionLabel.userInteractionEnabled = true
+        self.approveActionLabel.tag = 39
+        
+        
+        let requestClarificationTap = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
+        requestClarificationTap.numberOfTapsRequired = 1
+        self.requestClarificationUILabel.addGestureRecognizer(requestClarificationTap)
+        self.requestClarificationUILabel.userInteractionEnabled = true
+        self.requestClarificationUILabel.tag = 40
+        
         self.navigationController?.navigationBar.barTintColor = navigationBarColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navTitleFont!, NSForegroundColorAttributeName: navigationBarTitleColor]
         self.navigationController?.navigationBar.tintColor = navigationBarTitleColor
         
-        requestClarification.titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
-        approveAction.titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
-        
-        UITabBarItem.appearance().setTitleTextAttributes(
-            [NSFontAttributeName: UIFont(name:"Lato-black", size:16)!,
-                NSForegroundColorAttributeName: tabBarItemColor],
-            forState: .Normal)
+      
         
         self.scrollView.scrollEnabled = true
         self.scrollView.pagingEnabled = true
@@ -83,8 +92,8 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.view.addGestureRecognizer(dismissKeyBoard)
         
        let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
+        
         self.IssueStackView.addGestureRecognizer(tapGesture)
-        ApproveRequestTabBar.delegate = self
         
         self.actionDescriptionTextView.delegate = self
         self.actionDescriptionTextView.layer.borderWidth = CGFloat(1.0)
@@ -108,18 +117,16 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
         getForm();
         
-        ApproveRequestTabBar.delegate = self;
     }
     
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        
-        
+    func didSelectActionItem(sender: UIGestureRecognizer) {
+ 
         let putData = self.jsonDict!.mutableCopy()
         let contents = putData["content"] as? NSMutableDictionary
         
         let dict = putData as! NSMutableDictionary;
         let content = contents?.mutableCopy();
-
+        
         
         
         if let Obj = content!["ACTION_COMMENTS"] as? NSMutableDictionary
@@ -130,13 +137,17 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
             content?.setObject(object, forKey: "ACTION_COMMENTS");
         }
         
+        let itemTag = (sender.view as! UILabel).tag
+        let actionValue:String = String(itemTag)
         
+        /*
         var actionValue = "39";
         
         if(item == requestClarification)
         {
             actionValue = "40";
         }
+        */
         
         
         if let Obj = content!["ACT_ACTION"] as? NSMutableDictionary
@@ -148,10 +159,6 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
         
         dict.setObject(content!, forKey: "content");
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let myController:IssueViewVC = storyboard.instantiateViewControllerWithIdentifier("IssueViewVC") as! IssueViewVC
-    
         
         let reportURL = m2API.actionSubmitUrl(actionElement!.taskId,queryparams: "?action=submit&offline=no")
         let request = NSMutableURLRequest(URL: reportURL)
@@ -181,27 +188,24 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
                     self.loader.hideLoading()
+                    self.presentViewController(alert, animated: true, completion: nil)
                 })
                 return
             }
             
-             dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 
                 let alert = UIAlertController(title: "Alert", message: "Action submitted successfully ", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default){
-                        action in
-                    
-                        self.navigationController?.popToRootViewControllerAnimated(true);
-                        self.loader.hideLoading();
+                    action in
+                    self.loader.hideLoading();
+                    self.navigationController?.popToRootViewControllerAnimated(true);
                     })
-                
-                
+                self.presentViewController(alert, animated: true, completion: nil)
             })
-
         }
-        
+
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {

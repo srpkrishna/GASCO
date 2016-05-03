@@ -12,13 +12,7 @@ class IssueViewVC: UIViewController, UITextViewDelegate {
 
     
     @IBOutlet weak var issueVCNavigationItem: UINavigationItem!
-    
-    
-    @IBOutlet weak var approveRequestTabBar: UITabBar!
-    @IBOutlet weak var approveActionTabBarItem: UITabBarItem!
-    
-    @IBOutlet weak var requestClarification: UITabBarItem!
-    
+
     @IBOutlet weak var issueLabel: UILabel!
     
     let navTitleFont = UIFont(name: "Lato-Black", size: 18)
@@ -53,9 +47,6 @@ class IssueViewVC: UIViewController, UITextViewDelegate {
         self.issueDescriptionTextView.layer.borderWidth = CGFloat(1.0)
         self.issueDescriptionTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.issueDescriptionTextView.layer.cornerRadius = CGFloat(5.0)
-        
-        requestClarification.titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
-        approveActionTabBarItem.titlePositionAdjustment = UIOffsetMake(0.0, -10.0)
 
 //        self.issueLabel.font = navTitleFont
         

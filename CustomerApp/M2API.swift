@@ -12,27 +12,27 @@ import Foundation
 struct m2API {
     
     static func handShakeURL() -> NSURL{
-        let url = NSURL(string: "http://msi-vmintgasca1/metricstream/m2/2.2.3/christineh/handshake")
+        let url = NSURL(string: "http://msi-vmintgasca1/metricstream/m2/2.2.3/./handshake")
         return url!
     }
     
     static func getReportsURL() -> NSURL {
-        let url = NSURL(string:"http://msi-vmintgasca1/metricstream/m2/2.2/christineh/reports")
+        let url = NSURL(string:"http://msi-vmintgasca1/metricstream/m2/2.2/christineb/reports")
         return url!
     }
     
     static func inputDataURL() -> NSURL {
-        let url = NSURL(string: "http://msi-vmintgasca1/metricstream/m2/2.2/christineh/reports/R-100802/inputdata")
+        let url = NSURL(string: "http://msi-vmintgasca1/metricstream/m2/2.2/christineb/reports/R-100802/inputdata")
         return url!
     }
     
     static func actionItemsDataUrl() -> NSURL {
-        let url = NSURL(string: "http://msi-vmintgasca1/metricstream/m2/2.2/christineh/reports/R-100802/data")
+        let url = NSURL(string: "http://msi-vmintgasca1/metricstream/m2/2.2/christineb/reports/R-100802/data")
         return url!
     }
     
     static func actionDetailsDataUrl(id:String) -> NSURL {
-        var stringUrl = "http://msi-vmintgasca1/metricstream/m2/2.2/christineh/tasks/";
+        var stringUrl = "http://msi-vmintgasca1/metricstream/m2/2.2/christineb/tasks/";
         stringUrl = stringUrl.stringByAppendingString(id);
         stringUrl = stringUrl.stringByAppendingString("/form");
         let url = NSURL(string: stringUrl)
@@ -40,7 +40,7 @@ struct m2API {
     }
     
     static func actionSubmitUrl(id:String,queryparams:String) -> NSURL {
-        var stringUrl = "http://msi-vmintgasca1/metricstream/m2/2.2/christineh/tasks/";
+        var stringUrl = "http://msi-vmintgasca1/metricstream/m2/2.2/christineb/tasks/";
         stringUrl = stringUrl.stringByAppendingString(id);
         stringUrl = stringUrl.stringByAppendingString("/form");
         stringUrl = stringUrl.stringByAppendingString(queryparams);
