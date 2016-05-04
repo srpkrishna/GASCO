@@ -93,7 +93,7 @@ class SplashViewController: UIViewController
         
         self.view.addSubview(self.comapnyLogo)
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(10.0, target: self, selector: Selector("loadIntialViewOfTheApp"), userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(7.0, target: self, selector: Selector("loadIntialViewOfTheApp"), userInfo: nil, repeats: false)
     }
     
     override func didReceiveMemoryWarning() {

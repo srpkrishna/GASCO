@@ -39,6 +39,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
 
     @IBOutlet weak var issueLabel: UILabel!
     @IBOutlet weak var IssueStackView: UIStackView!
+    @IBOutlet weak var stackView: UIStackView!
     
     
     
@@ -93,17 +94,31 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
        let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
         
+        self.stackView.layer.cornerRadius = 10.0
+        
+        self.stackView.layer.borderWidth = 1.0
+        self.stackView.layer.borderColor = UIColor.blackColor().CGColor
+        
+        self.stackView.layer.shadowColor = UIColor.blackColor().CGColor
+        self.stackView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        self.stackView.layer.shadowOpacity = 0.7
+        self.stackView.layer.shadowRadius = 4.0
+        
         self.IssueStackView.addGestureRecognizer(tapGesture)
+        
+    
         
         self.actionDescriptionTextView.delegate = self
         self.actionDescriptionTextView.layer.borderWidth = CGFloat(1.0)
         self.actionDescriptionTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.actionDescriptionTextView.layer.cornerRadius = CGFloat(5.0)
+        self.actionDescriptionTextView.editable = false
         
         self.workDoneTextView.delegate = self
         self.workDoneTextView.layer.borderWidth = CGFloat(1.0)
         self.workDoneTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.workDoneTextView.layer.cornerRadius = CGFloat(5.0)
+        self.workDoneTextView.editable = false
         
         self.commentsTextView.delegate = self
         self.commentsTextView.layer.borderWidth = CGFloat(1.0)

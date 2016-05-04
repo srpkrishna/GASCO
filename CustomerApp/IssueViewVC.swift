@@ -33,7 +33,6 @@ class IssueViewVC: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         self.navigationController?.navigationBar.barTintColor = navigationBarColor
 //        self.navigationController?.navigationBar.items?.first?.backBarButtonItem?.title = ""
         print(self.navigationController?.navigationBar.items?.first?.backBarButtonItem?.title)
@@ -47,6 +46,7 @@ class IssueViewVC: UIViewController, UITextViewDelegate {
         self.issueDescriptionTextView.layer.borderWidth = CGFloat(1.0)
         self.issueDescriptionTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.issueDescriptionTextView.layer.cornerRadius = CGFloat(5.0)
+        self.issueDescriptionTextView.editable = false
 
 //        self.issueLabel.font = navTitleFont
         
