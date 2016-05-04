@@ -21,23 +21,23 @@ class SplashViewController: UIViewController
         super.viewDidLoad()
         
         let screenSize = UIScreen.mainScreen().bounds
-        let companyOrignX = (screenSize.size.width*35)/100
+        let companyOrignX = (screenSize.size.width*30)/100
         let companyOrignY = ((screenSize.size.height*30)/100)
         
         let companyNameColorElement = UIColor(red: 0.000, green: 0.353, blue: 0.667, alpha: 1.00)
         let companySubtitleColorElement = UIColor(red: 0.000, green: 0.424, blue: 0.706, alpha: 1.00)
         let companyTitleFont = UIFont(name: "Lato-black", size: 30)
-        let companySubTitleFont = UIFont(name: "Lato-black", size: 11.6)
+        let companySubTitleFont = UIFont(name: "Lato-black", size: 11)
         
-        companyFirstName = UILabel(frame: CGRect(x: companyOrignX, y: screenSize.origin.y, width: 61, height: 50))
-        companyFirstName.text  = "GAS"
+        companyFirstName = UILabel(frame: CGRect(x: companyOrignX, y: companyOrignY, width: 105, height: 50))
+        companyFirstName.text  = "GASCO"
         companyFirstName.font = companyTitleFont
         companyFirstName.numberOfLines = 0
         companyFirstName.adjustsFontSizeToFitWidth = false
         companyFirstName.textColor = companyNameColorElement
         self.view .addSubview(companyFirstName)
         
-        let xPositonForSecondLabel = companyFirstName.frame.origin.x + companyFirstName.frame.width
+      /*  let xPositonForSecondLabel = companyFirstName.frame.origin.x + companyFirstName.frame.width
         
         companyLastName = UILabel(frame: CGRect(x: xPositonForSecondLabel , y: screenSize.size.height-50, width: 45, height: 50))
         companyLastName.text  = "CO"
@@ -45,11 +45,11 @@ class SplashViewController: UIViewController
         companyLastName.numberOfLines = 0
         companyLastName.adjustsFontSizeToFitWidth = false
         companyLastName.textColor = companyNameColorElement
-        self.view.addSubview(companyLastName)
+        self.view.addSubview(companyLastName) */
         
         //DashBoard Label
-        let dashBoardOriginX = (screenSize.size.width*35)/100
-        let dashBoardOriginY = ((screenSize.size.height*34)/100)
+        let dashBoardOriginX = (screenSize.size.width*30)/100
+        let dashBoardOriginY = ((screenSize.size.height*35)/100)
         
         dashBoardLabel = UILabel(frame: CGRect(x: dashBoardOriginX , y: dashBoardOriginY, width: 183, height: 50))
         dashBoardLabel.text  = ""
@@ -62,14 +62,14 @@ class SplashViewController: UIViewController
         
         
         //Animating Company Label
-        UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: [], animations:
+     /*  UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: [], animations:
             {
-                self.companyFirstName.frame = CGRect(x: companyOrignX, y: companyOrignY, width: 103, height: 50)
-                self.companyLastName.frame = CGRect(x: xPositonForSecondLabel , y: companyOrignY, width: 45, height: 50)
-            }, completion: nil)
-        
+                self.companyFirstName.frame = CGRect(x: companyOrignX, y: companyOrignY, width: 105, height: 50)
+               /* self.companyLastName.frame = CGRect(x: xPositonForSecondLabel , y: companyOrignY, width: 45, height: 50) */
+            }, completion: nil) */
+
         //Animating DashBoard Label
-        UIView.animateWithDuration(2.5, delay: 0.3, options:    UIViewAnimationOptions.CurveEaseOut, animations: {
+        UIView.animateWithDuration(0.0, delay: 0.0, options:    UIViewAnimationOptions.CurveEaseOut, animations: {
             self.dashBoardLabel.alpha = 0.0
             }, completion: {
                 (finished: Bool) -> Void in
@@ -85,15 +85,15 @@ class SplashViewController: UIViewController
         })
         
         //Company Logo
-        let companyLogoOrginX = companyLastName.frame.origin.x + companyLastName.frame.size.width + 5
-        let companyLogoOriginY = companyLastName.frame.origin.y + companyLastName.frame.size.height - 5
+        let companyLogoOrginX = companyFirstName.frame.origin.x + companyFirstName.frame.size.width + 5
+        let companyLogoOriginY = companyFirstName.frame.origin.y + companyFirstName.frame.size.height - 5
         
         self.comapnyLogo = UIImageView(frame: CGRect(x: companyLogoOrginX, y: companyLogoOriginY - 80, width: 42, height: 80))
         self.comapnyLogo.image = UIImage(named: "gascoLogo.png")
         
         self.view.addSubview(self.comapnyLogo)
 
-        timer = NSTimer.scheduledTimerWithTimeInterval(7.0, target: self, selector: Selector("loadIntialViewOfTheApp"), userInfo: nil, repeats: false)
+        timer = NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: Selector("loadIntialViewOfTheApp"), userInfo: nil, repeats: false)
     }
     
     override func didReceiveMemoryWarning() {

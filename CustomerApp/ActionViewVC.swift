@@ -112,6 +112,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.actionDescriptionTextView.layer.borderWidth = CGFloat(1.0)
         self.actionDescriptionTextView.layer.borderColor = UIColor.grayColor().CGColor
         self.actionDescriptionTextView.layer.cornerRadius = CGFloat(5.0)
+        
         self.actionDescriptionTextView.editable = false
         
         self.workDoneTextView.delegate = self
