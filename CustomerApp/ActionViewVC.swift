@@ -64,8 +64,14 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        nextViewNavigationSymbol.layer.borderColor = UIColor(red: 0.043, green: 0.447, blue: 0.443, alpha: 1.00).CGColor
+        
+        nextViewNavigationSymbol.layer.borderColor = UIColor(red: 0.953, green: 0.502, blue: 0.094, alpha: 1.00).CGColor
         nextViewNavigationSymbol.layer.borderWidth = 1.0
+        
+        let viewMaskframe = CGRectMake(0.0, 0.0, nextViewNavigationSymbol.frame.size.width, nextViewNavigationSymbol.frame.size.height - 1.0)
+        let viewMask = UIView(frame: viewMaskframe)
+        viewMask.backgroundColor = UIColor.blackColor()
+        nextViewNavigationSymbol.layer.mask = viewMask.layer
         
         self.approveActionLabel.font = highLightedLabelFont
         self.requestClarificationUILabel.font = highLightedLabelFont
