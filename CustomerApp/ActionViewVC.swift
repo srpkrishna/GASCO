@@ -42,6 +42,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     @IBOutlet weak var stackView: UIStackView!
     
     
+    @IBOutlet weak var nextViewNavigationSymbol: UILabel!
     
     @IBOutlet weak var actionTitle: UILabel!
     @IBOutlet weak var issueTitle: UILabel!
@@ -63,6 +64,8 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        nextViewNavigationSymbol.layer.borderColor = UIColor(red: 0.043, green: 0.447, blue: 0.443, alpha: 1.00).CGColor
+        nextViewNavigationSymbol.layer.borderWidth = 1.0
         
         self.approveActionLabel.font = highLightedLabelFont
         self.requestClarificationUILabel.font = highLightedLabelFont
@@ -94,7 +97,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
        let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
         
-        self.stackView.layer.cornerRadius = 10.0
+        /*self.stackView.layer.cornerRadius = 10.0
         
         self.stackView.layer.borderWidth = 1.0
         self.stackView.layer.borderColor = UIColor.blackColor().CGColor
@@ -103,6 +106,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.stackView.layer.shadowOffset = CGSize(width: 3, height: 3)
         self.stackView.layer.shadowOpacity = 0.7
         self.stackView.layer.shadowRadius = 4.0
+        */
         
         self.IssueStackView.addGestureRecognizer(tapGesture)
         
