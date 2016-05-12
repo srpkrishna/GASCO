@@ -108,8 +108,6 @@ class ColumnDisplayView: DisplayView {
                 vc.popoverPresentationController?.sourceView = recognizer.view;
                 
                 
-                
-                
                 let popupView:PopupView = vc.view as! PopupView;
                 popupView.header1?.text = xAxisName;
                 popupView.header2?.text = chartUnit.colorName;
