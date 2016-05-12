@@ -28,9 +28,7 @@
 		F95FF47F1CCC94FD002BA260 /* UnderLineUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FF47E1CCC94FD002BA260 /* UnderLineUILabel.swift */; };
 		F973A3FC1CB61043002BA523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F973A3FA1CB61043002BA523 /* Main.storyboard */; };
 		F978756A1CE06DC900AB22D2 /* gascoLoginImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F97875691CE06DC900AB22D2 /* gascoLoginImage.png */; };
-		F978756C1CE0774B00AB22D2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F978756B1CE0774B00AB22D2 /* LoginViewController.swift */; };
 		F99CB5EF1CE2290500FA120E /* TaskDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99CB5EE1CE2290500FA120E /* TaskDisplayVC.swift */; };
-		F99FE5821CE1C1720073A4E4 /* HomeScreenTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99FE5811CE1C1720073A4E4 /* HomeScreenTBC.swift */; };
 		F9C6ED751CDC9BD00045AB55 /* dashBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED741CDC9BD00045AB55 /* dashBoard.png */; };
 		F9C6ED781CDC9E1F0045AB55 /* Dash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED761CDC9E1F0045AB55 /* Dash@2x.png */; };
 		F9C6ED791CDC9E1F0045AB55 /* Dash@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED771CDC9E1F0045AB55 /* Dash@3x.png */; };
@@ -70,8 +68,10 @@
 		F9D665651CCF49170066CF18 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D665641CCF49170066CF18 /* SplashViewController.swift */; };
 		F9E26FEF1CC61EB70024F967 /* ActionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */; };
 		F9E26FF11CC61EBD0024F967 /* IssueViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E26FF01CC61EBD0024F967 /* IssueViewVC.swift */; };
-		F9E294F31CE2E6AE00FF918F /* ImplementActionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E294F21CE2E6AE00FF918F /* ImplementActionTVC.swift */; };
-		F9E8D8591CE1B3D90027F183 /* ImplementActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E8D8581CE1B3D90027F183 /* ImplementActionVC.swift */; };
+		F9E512901CE45977001DA171 /* HomeScreenTBC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E5128F1CE45977001DA171 /* HomeScreenTBC.swift */; };
+		F9E512921CE45988001DA171 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E512911CE45988001DA171 /* LoginViewController.swift */; };
+		F9E512951CE45998001DA171 /* ImplementActionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E512931CE45998001DA171 /* ImplementActionTVC.swift */; };
+		F9E512961CE45998001DA171 /* ImplementActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E512941CE45998001DA171 /* ImplementActionVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,9 +96,7 @@
 		F95FF47E1CCC94FD002BA260 /* UnderLineUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderLineUILabel.swift; sourceTree = "<group>"; };
 		F973A3FB1CB61043002BA523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CustomerApp/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F97875691CE06DC900AB22D2 /* gascoLoginImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gascoLoginImage.png; sourceTree = "<group>"; };
-		F978756B1CE0774B00AB22D2 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F99CB5EE1CE2290500FA120E /* TaskDisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDisplayVC.swift; sourceTree = "<group>"; };
-		F99FE5811CE1C1720073A4E4 /* HomeScreenTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenTBC.swift; sourceTree = "<group>"; };
 		F9C6ED741CDC9BD00045AB55 /* dashBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dashBoard.png; sourceTree = "<group>"; };
 		F9C6ED761CDC9E1F0045AB55 /* Dash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dash@2x.png"; sourceTree = "<group>"; };
 		F9C6ED771CDC9E1F0045AB55 /* Dash@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dash@3x.png"; sourceTree = "<group>"; };
@@ -140,8 +138,10 @@
 		F9D665641CCF49170066CF18 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewVC.swift; sourceTree = "<group>"; };
 		F9E26FF01CC61EBD0024F967 /* IssueViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueViewVC.swift; sourceTree = "<group>"; };
-		F9E294F21CE2E6AE00FF918F /* ImplementActionTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImplementActionTVC.swift; sourceTree = "<group>"; };
-		F9E8D8581CE1B3D90027F183 /* ImplementActionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImplementActionVC.swift; sourceTree = "<group>"; };
+		F9E5128F1CE45977001DA171 /* HomeScreenTBC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenTBC.swift; sourceTree = "<group>"; };
+		F9E512911CE45988001DA171 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F9E512931CE45998001DA171 /* ImplementActionTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImplementActionTVC.swift; sourceTree = "<group>"; };
+		F9E512941CE45998001DA171 /* ImplementActionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImplementActionVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,13 +285,13 @@
 			isa = PBXGroup;
 			children = (
 				F9D665641CCF49170066CF18 /* SplashViewController.swift */,
-				F978756B1CE0774B00AB22D2 /* LoginViewController.swift */,
-				F99FE5811CE1C1720073A4E4 /* HomeScreenTBC.swift */,
+				F9E5128F1CE45977001DA171 /* HomeScreenTBC.swift */,
 				F9CAB6DC1CB3B517007FCCE6 /* ApproveActionTVC.swift */,
+				F9E512911CE45988001DA171 /* LoginViewController.swift */,
 				F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */,
+				F9E512931CE45998001DA171 /* ImplementActionTVC.swift */,
+				F9E512941CE45998001DA171 /* ImplementActionVC.swift */,
 				F9E26FF01CC61EBD0024F967 /* IssueViewVC.swift */,
-				F9E294F21CE2E6AE00FF918F /* ImplementActionTVC.swift */,
-				F9E8D8581CE1B3D90027F183 /* ImplementActionVC.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -441,8 +441,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9CC4B631CDC7F9800B7B8A5 /* ViewController.swift in Sources */,
+				F9E512951CE45998001DA171 /* ImplementActionTVC.swift in Sources */,
 				F903BE011CE4559B0066EB06 /* ChartFactory.swift in Sources */,
-				F99FE5821CE1C1720073A4E4 /* HomeScreenTBC.swift in Sources */,
 				F9CAB6DD1CB3B517007FCCE6 /* ApproveActionTVC.swift in Sources */,
 				F9CC4B6D1CDC7FC300B7B8A5 /* PopupView.swift in Sources */,
 				E90F2D8D1CC78F0D00FA5A4B /* LoadingScreen.swift in Sources */,
@@ -452,14 +452,14 @@
 				F9CAB6DF1CB3B57D007FCCE6 /* ApproveAction.swift in Sources */,
 				E9F13B221CC60787009C4B8C /* ActionElement.swift in Sources */,
 				F9CC4B5F1CDC7F8600B7B8A5 /* LinesDisplayView.swift in Sources */,
+				F9E512961CE45998001DA171 /* ImplementActionVC.swift in Sources */,
 				F9D665651CCF49170066CF18 /* SplashViewController.swift in Sources */,
 				F9CAB6CB1CB3AB23007FCCE6 /* AppDelegate.swift in Sources */,
 				F99CB5EF1CE2290500FA120E /* TaskDisplayVC.swift in Sources */,
 				F903BDFF1CE4558B0066EB06 /* Chart.swift in Sources */,
-				F978756C1CE0774B00AB22D2 /* LoginViewController.swift in Sources */,
 				F9CC4B521CDC7F3A00B7B8A5 /* ChartUnitData.swift in Sources */,
 				F9CC4B561CDC7F4500B7B8A5 /* PieChart.swift in Sources */,
-				F9E294F31CE2E6AE00FF918F /* ImplementActionTVC.swift in Sources */,
+				F9E512901CE45977001DA171 /* HomeScreenTBC.swift in Sources */,
 				F9CC4B5E1CDC7F8600B7B8A5 /* ColumnDisplayView.swift in Sources */,
 				F9CC4B6F1CDC7FCE00B7B8A5 /* HomeController.swift in Sources */,
 				F9CC4B581CDC7F4A00B7B8A5 /* LegendView.swift in Sources */,
@@ -471,8 +471,8 @@
 				F9CC4B4E1CDC7F2E00B7B8A5 /* YAxis.swift in Sources */,
 				F9CF17D81CC4B86200ED2E8E /* M2API.swift in Sources */,
 				F9CC4B651CDC7FA700B7B8A5 /* DashBoardView.swift in Sources */,
+				F9E512921CE45988001DA171 /* LoginViewController.swift in Sources */,
 				F9CC4B601CDC7F8600B7B8A5 /* DisplayView.swift in Sources */,
-				F9E8D8591CE1B3D90027F183 /* ImplementActionVC.swift in Sources */,
 				F9CC4B611CDC7F8600B7B8A5 /* StackedColumnDisplayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
