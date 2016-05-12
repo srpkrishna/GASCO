@@ -27,16 +27,7 @@
 		F94924661CCF86A000C28A7D /* Icon-Small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F949245B1CCF86A000C28A7D /* Icon-Small@3x.png */; };
 		F95FF47F1CCC94FD002BA260 /* UnderLineUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95FF47E1CCC94FD002BA260 /* UnderLineUILabel.swift */; };
 		F973A3FC1CB61043002BA523 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F973A3FA1CB61043002BA523 /* Main.storyboard */; };
-		F978756A1CE06DC900AB22D2 /* gascoLoginImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F97875691CE06DC900AB22D2 /* gascoLoginImage.png */; };
 		F99CB5EF1CE2290500FA120E /* TaskDisplayVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99CB5EE1CE2290500FA120E /* TaskDisplayVC.swift */; };
-		F9C6ED751CDC9BD00045AB55 /* dashBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED741CDC9BD00045AB55 /* dashBoard.png */; };
-		F9C6ED781CDC9E1F0045AB55 /* Dash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED761CDC9E1F0045AB55 /* Dash@2x.png */; };
-		F9C6ED791CDC9E1F0045AB55 /* Dash@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED771CDC9E1F0045AB55 /* Dash@3x.png */; };
-		F9C6ED7F1CDCA0520045AB55 /* analyticreport1.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED7A1CDCA0520045AB55 /* analyticreport1.png */; };
-		F9C6ED801CDCA0520045AB55 /* analyticreport2.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED7B1CDCA0520045AB55 /* analyticreport2.png */; };
-		F9C6ED811CDCA0520045AB55 /* analyticreport3.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED7C1CDCA0520045AB55 /* analyticreport3.png */; };
-		F9C6ED821CDCA0520045AB55 /* analyticreport4.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED7D1CDCA0520045AB55 /* analyticreport4.png */; };
-		F9C6ED831CDCA0520045AB55 /* analyticreport5.png in Resources */ = {isa = PBXBuildFile; fileRef = F9C6ED7E1CDCA0520045AB55 /* analyticreport5.png */; };
 		F9CAB6CB1CB3AB23007FCCE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CAB6CA1CB3AB23007FCCE6 /* AppDelegate.swift */; };
 		F9CAB6D21CB3AB23007FCCE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9CAB6D11CB3AB23007FCCE6 /* Assets.xcassets */; };
 		F9CAB6D51CB3AB23007FCCE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9CAB6D31CB3AB23007FCCE6 /* LaunchScreen.storyboard */; };
@@ -47,7 +38,6 @@
 		F9CAB6EB1CB3CB7A007FCCE6 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9CAB6E91CB3CB7A007FCCE6 /* Lato-Bold.ttf */; };
 		F9CC4B3C1CDC7E6600B7B8A5 /* Size.plist in Resources */ = {isa = PBXBuildFile; fileRef = F9CC4B3B1CDC7E6600B7B8A5 /* Size.plist */; };
 		F9CC4B3F1CDC7E7200B7B8A5 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = F9CC4B3D1CDC7E7200B7B8A5 /* data.json */; };
-		F9CC4B401CDC7E7200B7B8A5 /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = F9CC4B3E1CDC7E7200B7B8A5 /* input.json */; };
 		F9CC4B4E1CDC7F2E00B7B8A5 /* YAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CC4B4D1CDC7F2E00B7B8A5 /* YAxis.swift */; };
 		F9CC4B501CDC7F3200B7B8A5 /* XAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CC4B4F1CDC7F3200B7B8A5 /* XAxis.swift */; };
 		F9CC4B521CDC7F3A00B7B8A5 /* ChartUnitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CC4B511CDC7F3A00B7B8A5 /* ChartUnitData.swift */; };
@@ -63,7 +53,6 @@
 		F9CC4B691CDC7FB800B7B8A5 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CC4B681CDC7FB800B7B8A5 /* Parser.swift */; };
 		F9CC4B6D1CDC7FC300B7B8A5 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CC4B6C1CDC7FC300B7B8A5 /* PopupView.swift */; };
 		F9CC4B6F1CDC7FCE00B7B8A5 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CC4B6E1CDC7FCE00B7B8A5 /* HomeController.swift */; };
-		F9CC4B751CDC80CC00B7B8A5 /* ColorTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9CC4B741CDC80CC00B7B8A5 /* ColorTheme.bundle */; };
 		F9CF17D81CC4B86200ED2E8E /* M2API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CF17D61CC4B86200ED2E8E /* M2API.swift */; };
 		F9D665651CCF49170066CF18 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D665641CCF49170066CF18 /* SplashViewController.swift */; };
 		F9E26FEF1CC61EB70024F967 /* ActionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */; };
@@ -72,6 +61,9 @@
 		F9E512921CE45988001DA171 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E512911CE45988001DA171 /* LoginViewController.swift */; };
 		F9E512951CE45998001DA171 /* ImplementActionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E512931CE45998001DA171 /* ImplementActionTVC.swift */; };
 		F9E512961CE45998001DA171 /* ImplementActionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9E512941CE45998001DA171 /* ImplementActionVC.swift */; };
+		F9E512971CE45C0B001DA171 /* input.json in Resources */ = {isa = PBXBuildFile; fileRef = F9CC4B3E1CDC7E7200B7B8A5 /* input.json */; };
+		F9E512991CE45CC5001DA171 /* gascoLoginImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F9E512981CE45CC5001DA171 /* gascoLoginImage.png */; };
+		F9E5129B1CE45CE0001DA171 /* ColorTheme.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9E5129A1CE45CE0001DA171 /* ColorTheme.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,16 +87,7 @@
 		F949245B1CCF86A000C28A7D /* Icon-Small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small@3x.png"; sourceTree = "<group>"; };
 		F95FF47E1CCC94FD002BA260 /* UnderLineUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderLineUILabel.swift; sourceTree = "<group>"; };
 		F973A3FB1CB61043002BA523 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CustomerApp/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F97875691CE06DC900AB22D2 /* gascoLoginImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gascoLoginImage.png; sourceTree = "<group>"; };
 		F99CB5EE1CE2290500FA120E /* TaskDisplayVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDisplayVC.swift; sourceTree = "<group>"; };
-		F9C6ED741CDC9BD00045AB55 /* dashBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dashBoard.png; sourceTree = "<group>"; };
-		F9C6ED761CDC9E1F0045AB55 /* Dash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dash@2x.png"; sourceTree = "<group>"; };
-		F9C6ED771CDC9E1F0045AB55 /* Dash@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Dash@3x.png"; sourceTree = "<group>"; };
-		F9C6ED7A1CDCA0520045AB55 /* analyticreport1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyticreport1.png; sourceTree = "<group>"; };
-		F9C6ED7B1CDCA0520045AB55 /* analyticreport2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyticreport2.png; sourceTree = "<group>"; };
-		F9C6ED7C1CDCA0520045AB55 /* analyticreport3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyticreport3.png; sourceTree = "<group>"; };
-		F9C6ED7D1CDCA0520045AB55 /* analyticreport4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyticreport4.png; sourceTree = "<group>"; };
-		F9C6ED7E1CDCA0520045AB55 /* analyticreport5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = analyticreport5.png; sourceTree = "<group>"; };
 		F9CAB6C71CB3AB23007FCCE6 /* CustomerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9CAB6CA1CB3AB23007FCCE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9CAB6D11CB3AB23007FCCE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -133,7 +116,6 @@
 		F9CC4B681CDC7FB800B7B8A5 /* Parser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		F9CC4B6C1CDC7FC300B7B8A5 /* PopupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		F9CC4B6E1CDC7FCE00B7B8A5 /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
-		F9CC4B741CDC80CC00B7B8A5 /* ColorTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ColorTheme.bundle; sourceTree = "<group>"; };
 		F9CF17D61CC4B86200ED2E8E /* M2API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M2API.swift; sourceTree = "<group>"; };
 		F9D665641CCF49170066CF18 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		F9E26FEE1CC61EB70024F967 /* ActionViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewVC.swift; sourceTree = "<group>"; };
@@ -142,6 +124,8 @@
 		F9E512911CE45988001DA171 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F9E512931CE45998001DA171 /* ImplementActionTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImplementActionTVC.swift; sourceTree = "<group>"; };
 		F9E512941CE45998001DA171 /* ImplementActionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImplementActionVC.swift; sourceTree = "<group>"; };
+		F9E512981CE45CC5001DA171 /* gascoLoginImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gascoLoginImage.png; sourceTree = "<group>"; };
+		F9E5129A1CE45CE0001DA171 /* ColorTheme.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ColorTheme.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,13 +142,7 @@
 		F94924501CCF868B00C28A7D /* App Icon */ = {
 			isa = PBXGroup;
 			children = (
-				F97875691CE06DC900AB22D2 /* gascoLoginImage.png */,
-				F9C6ED7A1CDCA0520045AB55 /* analyticreport1.png */,
-				F9C6ED7B1CDCA0520045AB55 /* analyticreport2.png */,
-				F9C6ED7C1CDCA0520045AB55 /* analyticreport3.png */,
-				F9C6ED7D1CDCA0520045AB55 /* analyticreport4.png */,
-				F9C6ED7E1CDCA0520045AB55 /* analyticreport5.png */,
-				F9C6ED741CDC9BD00045AB55 /* dashBoard.png */,
+				F9E512981CE45CC5001DA171 /* gascoLoginImage.png */,
 				F94924511CCF86A000C28A7D /* Icon-40.png */,
 				F94924521CCF86A000C28A7D /* Icon-40@2x.png */,
 				F94924531CCF86A000C28A7D /* Icon-40@3x.png */,
@@ -176,8 +154,6 @@
 				F94924591CCF86A000C28A7D /* Icon-Small.png */,
 				F949245A1CCF86A000C28A7D /* Icon-Small@2x.png */,
 				F949245B1CCF86A000C28A7D /* Icon-Small@3x.png */,
-				F9C6ED761CDC9E1F0045AB55 /* Dash@2x.png */,
-				F9C6ED771CDC9E1F0045AB55 /* Dash@3x.png */,
 			);
 			name = "App Icon";
 			sourceTree = "<group>";
@@ -185,8 +161,8 @@
 		F9CAB6BE1CB3AB23007FCCE6 = {
 			isa = PBXGroup;
 			children = (
-				F9CC4B741CDC80CC00B7B8A5 /* ColorTheme.bundle */,
 				F9CC4B3B1CDC7E6600B7B8A5 /* Size.plist */,
+				F9E5129A1CE45CE0001DA171 /* ColorTheme.bundle */,
 				F9CC4B491CDC7EFC00B7B8A5 /* Dashboards */,
 				F9CC4B411CDC7E8400B7B8A5 /* sampleData */,
 				F9CAB6C91CB3AB23007FCCE6 /* CustomerApp */,
@@ -399,36 +375,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9E512971CE45C0B001DA171 /* input.json in Resources */,
 				F94924641CCF86A000C28A7D /* Icon-Small.png in Resources */,
 				F94924601CCF86A000C28A7D /* Icon-60@3x.png in Resources */,
 				F94924611CCF86A000C28A7D /* Icon-76.png in Resources */,
 				F9CC4B3F1CDC7E7200B7B8A5 /* data.json in Resources */,
-				F9CC4B401CDC7E7200B7B8A5 /* input.json in Resources */,
 				F949245C1CCF86A000C28A7D /* Icon-40.png in Resources */,
-				F9C6ED7F1CDCA0520045AB55 /* analyticreport1.png in Resources */,
-				F9C6ED791CDC9E1F0045AB55 /* Dash@3x.png in Resources */,
-				F9C6ED821CDCA0520045AB55 /* analyticreport4.png in Resources */,
 				F94924651CCF86A000C28A7D /* Icon-Small@2x.png in Resources */,
 				F973A3FC1CB61043002BA523 /* Main.storyboard in Resources */,
 				F94924621CCF86A000C28A7D /* Icon-76@2x.png in Resources */,
-				F978756A1CE06DC900AB22D2 /* gascoLoginImage.png in Resources */,
-				F9C6ED801CDCA0520045AB55 /* analyticreport2.png in Resources */,
-				F9C6ED751CDC9BD00045AB55 /* dashBoard.png in Resources */,
-				F9CC4B751CDC80CC00B7B8A5 /* ColorTheme.bundle in Resources */,
 				F949244F1CCF6EA800C28A7D /* gascoLogo.png in Resources */,
 				F949245D1CCF86A000C28A7D /* Icon-40@2x.png in Resources */,
+				F9E512991CE45CC5001DA171 /* gascoLoginImage.png in Resources */,
 				F949245F1CCF86A000C28A7D /* Icon-60@2x.png in Resources */,
 				F949245E1CCF86A000C28A7D /* Icon-40@3x.png in Resources */,
+				F9E5129B1CE45CE0001DA171 /* ColorTheme.bundle in Resources */,
 				F9CC4B3C1CDC7E6600B7B8A5 /* Size.plist in Resources */,
-				F9C6ED831CDCA0520045AB55 /* analyticreport5.png in Resources */,
 				E9F13B201CC5EF1D009C4B8C /* input.json in Resources */,
-				F9C6ED781CDC9E1F0045AB55 /* Dash@2x.png in Resources */,
 				F94924661CCF86A000C28A7D /* Icon-Small@3x.png in Resources */,
 				F9CAB6EA1CB3CB7A007FCCE6 /* Lato-Black.ttf in Resources */,
 				F94924631CCF86A000C28A7D /* Icon-83.5@2x.png in Resources */,
 				F9CAB6EB1CB3CB7A007FCCE6 /* Lato-Bold.ttf in Resources */,
 				F9CAB6D51CB3AB23007FCCE6 /* LaunchScreen.storyboard in Resources */,
-				F9C6ED811CDCA0520045AB55 /* analyticreport3.png in Resources */,
 				F9CAB6D21CB3AB23007FCCE6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
