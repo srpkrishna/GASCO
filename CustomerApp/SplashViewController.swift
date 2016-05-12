@@ -104,7 +104,7 @@ class SplashViewController: UIViewController
     func loadIntialViewOfTheApp()
     {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let myController   = storyboard.instantiateViewControllerWithIdentifier("EntryNavigationBar")
+        let myController   = storyboard.instantiateViewControllerWithIdentifier("LoginViewController")
         self.presentViewController(myController, animated: true, completion: nil)
     }
 }

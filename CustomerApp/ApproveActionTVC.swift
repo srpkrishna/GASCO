@@ -76,8 +76,6 @@ class ApproveActionTVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-
-        
         return 66
     }
 
@@ -232,5 +230,16 @@ class ApproveActionTVC: UITableViewController {
         
         
     }
+    
+    @IBAction func dashBoardView(sender: UIBarButtonItem) {
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("dashboard") as UIViewController;
+        
+        self.navigationController?.pushViewController(vc, animated: true);
+
+    
+    }
+    
 
 }

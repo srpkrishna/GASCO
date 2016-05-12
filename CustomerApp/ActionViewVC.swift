@@ -16,12 +16,6 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     @IBOutlet weak var navApproveRequestTitle: UINavigationItem!
     
-    /* Start: TabBar and TabBar Items */
-    @IBOutlet weak var ApproveRequestTabBar: UITabBar!
-    @IBOutlet weak var approveAction: UITabBarItem!
-    @IBOutlet weak var requestClarification: UITabBarItem!
-    /* End: TabBar and TabBar Items */
-
     @IBOutlet weak var scrollView: UIScrollView! //ScrollView
     
     let navTitleFont = UIFont(name: "Lato-black", size: 18)
@@ -29,7 +23,7 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
     let navigationBarTitleColor = UIColor(red: 0.078, green: 0.451, blue: 0.749, alpha: 1.00)
     
     
-    let highLightedLabelFont = UIFont(name: "Lato-Bold", size: 16)
+    let latoBold16Font = UIFont(name: "Lato-Bold", size: 16)
     
     @IBOutlet weak var approveActionLabel: UILabel!
     @IBOutlet weak var requestClarificationUILabel: UILabel!
@@ -73,78 +67,70 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         viewMask.backgroundColor = UIColor.blackColor()
         nextViewNavigationSymbol.layer.mask = viewMask.layer
         
-        self.approveActionLabel.font = highLightedLabelFont
-        self.requestClarificationUILabel.font = highLightedLabelFont
-        
-        let approveActionTap = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
-        approveActionTap.numberOfTapsRequired = 1
-        self.approveActionLabel.addGestureRecognizer(approveActionTap)
-        self.approveActionLabel.userInteractionEnabled = true
-        self.approveActionLabel.tag = 39
-        
-        
-        let requestClarificationTap = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
-        requestClarificationTap.numberOfTapsRequired = 1
-        self.requestClarificationUILabel.addGestureRecognizer(requestClarificationTap)
-        self.requestClarificationUILabel.userInteractionEnabled = true
-        self.requestClarificationUILabel.tag = 40
-        
         self.navigationController?.navigationBar.barTintColor = navigationBarColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navTitleFont!, NSForegroundColorAttributeName: navigationBarTitleColor]
         self.navigationController?.navigationBar.tintColor = navigationBarTitleColor
         
-      
+        //Text View Customization
+        customizeTextView(actionDescriptionTextView, canEdit: false)
+        customizeTextView(workDoneTextView, canEdit: false)
+        customizeTextView(commentsTextView, canEdit: true)
         
-        self.scrollView.scrollEnabled = true
-        self.scrollView.pagingEnabled = true
+        //TabBar Customization
+        let approveActionTapGesture = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
+        addTapGestureForTabBar(approveActionTapGesture, label: approveActionLabel, tag: 39)
         
-        let dismissKeyBoard = UITapGestureRecognizer(target: self, action: "dismissKeyBoardOnTapofView:")
-        self.view.addGestureRecognizer(dismissKeyBoard)
+        let requestClarificationTapGesture = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
+        addTapGestureForTabBar(requestClarificationTapGesture, label: requestClarificationUILabel, tag: 40)
         
-       let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
-        
-        /*self.stackView.layer.cornerRadius = 10.0
-        
-        self.stackView.layer.borderWidth = 1.0
-        self.stackView.layer.borderColor = UIColor.blackColor().CGColor
-        
-        self.stackView.layer.shadowColor = UIColor.blackColor().CGColor
-        self.stackView.layer.shadowOffset = CGSize(width: 3, height: 3)
-        self.stackView.layer.shadowOpacity = 0.7
-        self.stackView.layer.shadowRadius = 4.0
-        */
-        
+        //Navigate to IssueViewVC Tap Gesture
+        let tapGesture = UITapGestureRecognizer(target: self, action: "navigateToIssueVC:")
         self.IssueStackView.addGestureRecognizer(tapGesture)
         
-    
+        //Dismiss KeyBoard on Tap
+        let dismissKeyBoard = UITapGestureRecognizer(target: self, action: "dismissKeyBoardOnTapofView:")
+        self.view.addGestureRecognizer(dismissKeyBoard)
+
+        self.issueLabel.font = latoBold16Font
+        self.actionImplementationUIUnderLineLabel.font = latoBold16Font
         
-        self.actionDescriptionTextView.delegate = self
-        self.actionDescriptionTextView.layer.borderWidth = CGFloat(1.0)
-        self.actionDescriptionTextView.layer.borderColor = UIColor.grayColor().CGColor
-        self.actionDescriptionTextView.layer.cornerRadius = CGFloat(5.0)
-        
-        self.actionDescriptionTextView.editable = false
-        
-        self.workDoneTextView.delegate = self
-        self.workDoneTextView.layer.borderWidth = CGFloat(1.0)
-        self.workDoneTextView.layer.borderColor = UIColor.grayColor().CGColor
-        self.workDoneTextView.layer.cornerRadius = CGFloat(5.0)
-        self.workDoneTextView.editable = false
-        
-        self.commentsTextView.delegate = self
-        self.commentsTextView.layer.borderWidth = CGFloat(1.0)
-        self.commentsTextView.layer.borderColor = UIColor.grayColor().CGColor
-        self.commentsTextView.layer.cornerRadius = CGFloat(5.0)
-        
-        
-        self.actionImplementationUIUnderLineLabel.font = highLightedLabelFont
         self.actionImplementationUIUnderLineLabel.text = self.actionImplementationUIUnderLineLabel.text
-        self.issueLabel.font = highLightedLabelFont
         
         getForm();
-        
     }
     
+    //Text View Customization
+    func customizeTextView(textView: UITextView, canEdit: Bool){
+        textView.delegate = self
+        textView.layer.borderWidth = CGFloat(1.0)
+        textView.layer.borderColor = UIColor.grayColor().CGColor
+        textView.layer.cornerRadius = CGFloat(5.0)
+        textView.editable = canEdit
+    }
+
+    //TabBar Customization
+    func addTapGestureForTabBar(tap: UITapGestureRecognizer, label: UILabel, tag: Int) {
+        tap.numberOfTapsRequired = 1
+        label.addGestureRecognizer(tap)
+        label.userInteractionEnabled = true
+        label.font = UIFont(name: "Lato-Bold", size: 16)
+        label.tag = tag
+    }
+    
+    //Navigate to IssueView VC
+    func navigateToIssueVC(sender:UITapGestureRecognizer){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let myController:IssueViewVC = storyboard.instantiateViewControllerWithIdentifier("IssueViewVC") as! IssueViewVC
+        myController.jsonDict = self.jsonDict;
+        self.navigationController?.pushViewController(myController, animated: true);
+    }
+    
+    //Dismiss KeyBoard on Tap
+    func dismissKeyBoardOnTapofView(sender:UITapGestureRecognizer){
+        self.view.endEditing(true)
+    }
+    
+    //On Tap of ApproveAction or RequestesClarification Label This Call back will get executed
     func didSelectActionItem(sender: UIGestureRecognizer) {
  
         let putData = self.jsonDict!.mutableCopy()
@@ -234,31 +220,11 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
 
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n" {
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
     deinit{
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
-    func navigateToIssueVC(sender:UITapGestureRecognizer){
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let myController:IssueViewVC = storyboard.instantiateViewControllerWithIdentifier("IssueViewVC") as! IssueViewVC
-        myController.jsonDict = self.jsonDict;
-        self.navigationController?.pushViewController(myController, animated: true);
-
-        
-    }
-    
-    func dismissKeyBoardOnTapofView(sender:UITapGestureRecognizer){
-        self.view.endEditing(true)
-    }
-    
+    //Loading Form
     func getForm(){
         let reportURL = m2API.actionDetailsDataUrl(actionElement!.taskId)
         let request = NSMutableURLRequest(URL: reportURL)
@@ -392,6 +358,34 @@ class ActionViewVC: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
         
     }
+    
+    //UITextViewDelegate
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+      animateViewMoving(true, moveValue: 100)
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        animateViewMoving(false, moveValue: 100)
+    }
+    
+    func animateViewMoving (up:Bool, moveValue :CGFloat){
+        let movementDuration:NSTimeInterval = 0.3
+        let movement:CGFloat = ( up ? -moveValue : moveValue)
+        UIView.beginAnimations( "animateView", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration )
+        self.view.frame = CGRectOffset(self.view.frame, 0,  movement)
+        UIView.commitAnimations()
+    }
+
 }
 
     
