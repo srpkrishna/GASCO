@@ -198,6 +198,7 @@ class PieChart: UIView {
                 popupView.header2?.text = unitData!.colorName;
                 popupView.label1?.text = unitData!.xname;
                 popupView.label2?.text = String(unitData!.value);
+
                 
                 let colorIndex = arcIndex % colors.count
                 
