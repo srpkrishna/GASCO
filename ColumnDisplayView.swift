@@ -143,7 +143,7 @@ class ColumnDisplayView: DisplayView {
                 self.maxBarWidth = CGFloat(maxbarWidth)
                 self.barSpace = CGFloat(barSpace)
                 
-                 let popupComponentSizes = iPhoneComponents!["PopupView"] as? Dictionary<String, AnyObject>
+                let popupComponentSizes = iPhoneComponents!["PopupView"] as? Dictionary<String, AnyObject>
                 let tempPopupWidth: Int = (popupComponentSizes!["popupWidth"] as? Int)!
                 let tempPopupHeight: Int = (popupComponentSizes!["popupHeight"] as? Int)!
                 

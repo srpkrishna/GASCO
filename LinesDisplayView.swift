@@ -17,6 +17,9 @@ class LinesDisplayView: DisplayView {
     var lineWidth:CGFloat = 0//1.5
     var radius:CGFloat = 0//2.0
     
+    var popupWidth: CGFloat = 0
+    var popupHeight: CGFloat = 0
+    
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
     override func drawRect(rect: CGRect) {
@@ -118,7 +121,7 @@ class LinesDisplayView: DisplayView {
                 let vc = storyboard.instantiateViewControllerWithIdentifier("popup") as UIViewController
                 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
-                vc.preferredContentSize = CGSizeMake(420, 90)
+                vc.preferredContentSize = CGSizeMake(self.popupWidth, self.popupHeight)
                 vc.popoverPresentationController?.sourceRect = CGRect(x: (width!/2), y: 1, width:0, height:0);
                 vc.popoverPresentationController?.sourceView = recognizer.view;
                 
@@ -161,6 +164,13 @@ class LinesDisplayView: DisplayView {
                 
                 self.radius = CGFloat(radius)
                 self.lineWidth = CGFloat(lineWidth)
+                
+                let popupComponentSizes = iPhoneComponents!["PopupView"] as? Dictionary<String, AnyObject>
+                let tempPopupWidth: Int = (popupComponentSizes!["popupWidth"] as? Int)!
+                let tempPopupHeight: Int = (popupComponentSizes!["popupHeight"] as? Int)!
+                
+                self.popupWidth =  CGFloat(tempPopupWidth)
+                self.popupHeight = CGFloat(tempPopupHeight)
         }
     }
 }

@@ -17,7 +17,13 @@ struct arcAngle {
     var endAngle: CGFloat
 }
 
+
+
+
 class PieChart: UIView {
+    
+    var popupWidth: CGFloat = 0
+    var popupHeight: CGFloat = 0
 
     
     var total:CGFloat = 0;
@@ -190,7 +196,7 @@ class PieChart: UIView {
                 let vc = storyboard.instantiateViewControllerWithIdentifier("popup") as UIViewController
                 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
-                vc.preferredContentSize = CGSizeMake(420, 90)
+                vc.preferredContentSize = CGSizeMake(self.popupWidth, self.popupHeight)
                 vc.popoverPresentationController?.sourceRect = CGRect(x: touchLocation.x, y: touchLocation.y, width:0, height:0);
                 vc.popoverPresentationController?.sourceView = self;
                 
@@ -258,6 +264,14 @@ class PieChart: UIView {
                 
                 self.otherViewsHeight = CGFloat(otherViewsHeight)
                 print("self.otherViewsHeight = \(self.otherViewsHeight)")
+                
+                let popupComponentSizes = iPhoneComponents!["PopupView"] as? Dictionary<String, AnyObject>
+                let tempPopupWidth: Int = (popupComponentSizes!["popupWidth"] as? Int)!
+                let tempPopupHeight: Int = (popupComponentSizes!["popupHeight"] as? Int)!
+                
+                self.popupWidth =  CGFloat(tempPopupWidth)
+                self.popupHeight = CGFloat(tempPopupHeight)
+
                 
         }
     }
