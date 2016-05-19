@@ -111,7 +111,7 @@ class PieChart: UIView {
     }
     
     
-    init(frame: CGRect,data:[String:ChartUnitData],colorValues:[String],xAxisName:String,yAxisName:String) {
+    init(frame: CGRect,data:[String:ChartUnitData],colorValues:[String],xAxisName:String,yAxisName:String, title: String) {
         
         self.xAxisName = xAxisName
         self.data = data;
@@ -126,8 +126,9 @@ class PieChart: UIView {
         legendView = LegendView.init(frame: CGRectZero, data: self.colorKeys,colors:colors);
         titleView = UILabel.init(frame: CGRectZero);
         titleView.textAlignment = NSTextAlignment.Center;
-        titleView.text = xAxisName+" Vs "+yAxisName;
-        
+
+        titleView.text = title;
+    
          super.init(frame: frame)
          self.addSubview(legendView)
          self.addSubview(titleView);
@@ -195,7 +196,7 @@ class PieChart: UIView {
                 
                 let popupView:PopupView = vc.view as! PopupView;
                 popupView.header1?.text = self.xAxisName
-                popupView.header2?.text = unitData!.colorName;
+                popupView.header2?.text = "Count";
                 popupView.label1?.text = unitData!.xname;
                 popupView.label2?.text = String(unitData!.value);
 

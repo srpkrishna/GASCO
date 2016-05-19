@@ -28,6 +28,7 @@ class HomeScreenTBC: UITabBarController {
             tabBarItem.titlePositionAdjustment = tabBarItemPostionAdjustmentOffset
         }
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

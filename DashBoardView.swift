@@ -85,43 +85,45 @@ class DashBoardView: UIScrollView,ChartDelegate, pieDelegate {
         
         if let data = content
         {
-            var parser = Parser.init(jsonData: data, axisColumns: ["MONTH"]);
+            
+            
+            var parser = Parser.init(jsonData: data, axisColumns: ["STATUS"]);
             let (columnData,columnAxisKeys) = parser.parseElements(measures);
-            let columnChart = Chart.init(frame: CGRectZero, graph: ChartTypesEnum.Column,data:columnData,axisValues:columnAxisKeys,colorValues:measures,xAxisName:"Month",yAxisName:"Targets")
+            let columnChart = Chart.init(frame: CGRectZero, graph: ChartTypesEnum.Column,data:columnData,axisValues:columnAxisKeys,colorValues:measures,xAxisName:"Overdue/not Overdue", yAxisName:"Count", title: "Open Issues (L1) - Status Wise")
             
             columnChart.chartDelegate = self;
             
-            parser = Parser.init(jsonData: data, axisColumns: ["DEPARTMENT"]);
+
+            parser = Parser.init(jsonData: data, axisColumns: ["YEAR"]);
             let (lineData,lineAxisKeys) = parser.parseElements(measures);
             
-            let lineChart = Chart.init(frame: CGRectZero, graph: ChartTypesEnum.Line,data:lineData,axisValues:lineAxisKeys,colorValues:measures,xAxisName:"Department",yAxisName:"Targets")
+            let lineChart = Chart.init(frame: CGRectZero, graph: ChartTypesEnum.Line,data:lineData,axisValues:lineAxisKeys,colorValues:measures,xAxisName:"Year",yAxisName:"Open Issues", title: "Open Issues (L1) - H/M/L")
             lineChart.chartDelegate = self;
-            
-            
-            parser = Parser.init(jsonData: data, axisColumns: ["LOCALE"]);
+         
+            parser = Parser.init(jsonData: data, axisColumns: ["YEAR"]);
             let (stackedData,stackedAxisKeys) = parser.parseElements(measures);
             
-            let stackedColumn = Chart.init(frame: CGRectZero, graph: ChartTypesEnum.StackedColumn,data:stackedData,axisValues:stackedAxisKeys,colorValues:measures,xAxisName:"Locale",yAxisName:"Targets")
+            let stackedColumn = Chart.init(frame: CGRectZero, graph: ChartTypesEnum.StackedColumn,data:stackedData,axisValues:stackedAxisKeys,colorValues:measures,xAxisName:"Year",yAxisName:"", title: "Total Closed Issues (L2 & L3)")
             stackedColumn.chartDelegate = self;
-            
-            parser = Parser.init(jsonData: data, axisColumns: ["DEPARTMENT"]);
+
+            parser = Parser.init(jsonData: data, axisColumns: ["L1OPENISSUESTATUS"]);
             let colorKey = measures[0] as String
             let (piedata,pieaxisKeys) = parser.parseElementsForPie(colorKey);
             
-            let pieChart = PieChart.init(frame: CGRectZero,data:piedata,colorValues:pieaxisKeys,xAxisName:"Department",yAxisName:"Targets");
+            let pieChart = PieChart.init(frame: CGRectZero,data:piedata,colorValues:pieaxisKeys,xAxisName:"Risk Level",yAxisName:"Count", title: "Total Open Issues (L2 & L3) - Year Wise");
             pieChart.delegate = self
             
     
-            
             self.addSubview(columnChart)
             self.addSubview(lineChart)
             self.addSubview(stackedColumn)
             self.addSubview(pieChart)
-            
+
             charts.append(columnChart)
             charts.append(lineChart)
-            charts.append(pieChart)
             charts.append(stackedColumn)
+            charts.append(pieChart)
+
             
             
             //self.backgroundColor = UIColor.grayColor()

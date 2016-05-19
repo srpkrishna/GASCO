@@ -54,6 +54,11 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
         self.view.addGestureRecognizer(dismissKeyBoard)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = "Implement Action"
+    }
+    
     //TextField Customization
     func customizeTextField(textField: UITextField, canEdit: Bool){
         textField.placeholder = ""

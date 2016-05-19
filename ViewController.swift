@@ -73,9 +73,15 @@ class ViewController: UIViewController, DashboardDelegate, UIAdaptivePresentatio
 
         dashboard.dashboardDelegate = self;
         
+        
         // let emailButton : UIBarButtonItem = UIBarButtonItem(title: "Email", style: UIBarButtonItemStyle.Plain, target: self, action: "")
        // self.navigationItem.rightBarButtonItem = emailButton
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = "L1 and L2 DashBoard"
     }
 
     override func didReceiveMemoryWarning() {
