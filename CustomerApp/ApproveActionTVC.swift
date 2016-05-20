@@ -13,19 +13,11 @@ class ApproveActionTVC: UITableViewController {
     var pendingApprovalItems:[ActionElement] = [ActionElement]()
     @IBOutlet weak var approveActionTitle: UINavigationItem!
     
-    let navTitleFont = UIFont(name: "Lato-black", size: 18)
-
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
    
-        
-        let navBarColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
-        let navTitleColor = UIColor(red: 0.078, green: 0.451, blue: 0.749, alpha: 1.00)
-
-        self.navigationController?.navigationBar.barTintColor = navBarColor
-        self.navigationController?.title = "Approve Action"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navTitleFont!, NSForegroundColorAttributeName: navTitleColor]
             // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

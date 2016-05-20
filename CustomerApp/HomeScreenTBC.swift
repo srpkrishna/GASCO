@@ -29,6 +29,13 @@ class HomeScreenTBC: UITabBarController {
             tabBarItem.titlePositionAdjustment = tabBarItemPostionAdjustmentOffset
         }
         
+        let navBarColor = UIColor(red: 255, green: 255, blue: 255, alpha: 1)
+        let navTitleColor = UIColor(red: 0.078, green: 0.451, blue: 0.749, alpha: 1.00)
+        
+        let navTitleFont = UIFont(name: "Lato-black", size: 18)
+        self.navigationController?.navigationBar.barTintColor = navBarColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navTitleFont!, NSForegroundColorAttributeName: navTitleColor]
+        
         self.fetchReport();
     }
     
@@ -81,8 +88,8 @@ class HomeScreenTBC: UITabBarController {
                 return
             }
             
-            let string1 = NSString(data: data!, encoding: NSUTF8StringEncoding)
-            print(string1)
+//            let string1 = NSString(data: data!, encoding: NSUTF8StringEncoding)
+//            print(string1)
             
             do
             {

@@ -498,13 +498,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jdG-4X-FlY">
                                 <rect key="frame" x="0.0" y="1251" width="375" height="49"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send for Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-kv-f9g">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="31" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send for Review" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-kv-f9g">
                                         <rect key="frame" x="187" y="4" width="181" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.99624004479999995" green="1" blue="0.93488875810000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send for Approval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-AD-MSS">
+                                    <label opaque="NO" userInteractionEnabled="NO" tag="32" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send for Approval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAu-AD-MSS">
                                         <rect key="frame" x="8" y="4" width="180" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="180" id="6zo-ps-jEk"/>
@@ -939,19 +939,19 @@
                                         <color key="textColor" red="0.95294117649999999" green="0.50588235290000005" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="LgN-OI-KUd">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="-2" translatesAutoresizingMaskIntoConstraints="NO" id="LgN-OI-KUd">
                                         <rect key="frame" x="16" y="742" width="349" height="32"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="184" translatesAutoresizingMaskIntoConstraints="NO" id="X59-qC-KUB">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="184" translatesAutoresizingMaskIntoConstraints="NO" id="X59-qC-KUB">
                                                 <rect key="frame" x="0.0" y="0.0" width="349" height="33"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="View Issue Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-nK-eEV">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="View Issue Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-nK-eEV">
                                                         <rect key="frame" x="0.0" y="0.0" width="139" height="33"/>
                                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
                                                         <color key="textColor" red="0.95294117649999999" green="0.50588235290000005" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="8" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IUN-hM-wmM">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IUN-hM-wmM">
                                                         <rect key="frame" x="323" y="0.0" width="26" height="33"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUv-C6-qN8">

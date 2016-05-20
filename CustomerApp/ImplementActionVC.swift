@@ -47,10 +47,10 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
         
        //TabBar Customization
         let sendForApprovalTapGesture = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
-        addTapGestureForTabBar(sendForApprovalTapGesture, label: sendForApproval, tag: 39)
+        addTapGestureForTabBar(sendForApprovalTapGesture, label: sendForApproval, tag: 32)
         
         let sendForReviewTapGesture = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
-        addTapGestureForTabBar(sendForReviewTapGesture, label: sendForReview, tag: 40)
+        addTapGestureForTabBar(sendForReviewTapGesture, label: sendForReview, tag: 31)
         
         //ScrollView
         self.scrollView.delegate = self
@@ -138,7 +138,115 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
     
     func didSelectActionItem(sender: UIGestureRecognizer) {
         
-        //Action Code goes here
+        let putData = self.jsonDict!.mutableCopy()
+        let contents = putData["content"] as? NSMutableDictionary
+        
+        let dict = putData as! NSMutableDictionary;
+        let content = contents?.mutableCopy();
+        
+        
+        
+        if let Obj = content!["ACTION_COMMENTS"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            let val = self.commentsTextView.text;
+            object.setObject(val, forKey: "value")
+            content?.setObject(object, forKey: "ACTION_COMMENTS");
+        }
+        
+        if let Obj = content!["ACTION_RESULTS"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            let val = self.results.text;
+            object.setObject(val, forKey: "value")
+            content?.setObject(object, forKey: "ACTION_RESULTS");
+        }
+        
+        if let Obj = content!["ACTION_WORK_DONE"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            let val = self.workDoneTextView.text;
+            object.setObject(val, forKey: "value")
+            content?.setObject(object, forKey: "ACTION_WORK_DONE");
+        }
+        
+        if let Obj = content!["ACTION_DETAILS"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            let val = self.actionDescriptionTextView.text;
+            object.setObject(val, forKey: "value")
+            content?.setObject(object, forKey: "ACTION_DETAILS");
+        }
+        
+        
+        let itemTag = (sender.view as! UILabel).tag
+        let actionValue:String = String(itemTag)
+        
+        /*
+         var actionValue = "39";
+         
+         if(item == requestClarification)
+         {
+         actionValue = "40";
+         }
+         */
+        
+        
+        if let Obj = content!["ACT_ACTION"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            object.setObject(actionValue, forKey: "value")
+            content?.setObject(object, forKey: "ACT_ACTION");
+        }
+        
+        
+        dict.setObject(content!, forKey: "content");
+        
+        let reportURL = m2API.actionSubmitUrl(actionElement!.taskId,queryparams: "?action=submit&offline=no")
+        let request = NSMutableURLRequest(URL: reportURL)
+        request.HTTPMethod = "PUT";
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        do
+        {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(dict,options:NSJSONWritingOptions.init(rawValue: 0))
+            let string1 = NSString(data: request.HTTPBody!, encoding: NSUTF8StringEncoding)
+            print(string1)
+            
+        }catch let error as NSError {
+            // error handling
+            NSLog("error %@", error.description);
+        }
+        
+        loader.showLoading();
+        
+        let serverCall = HttpCall.init();
+        serverCall.getData(request){(data,error) -> Void in
+            
+            if(error != "")
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                    self.loader.hideLoading()
+                    self.presentViewController(alert, animated: true, completion: nil)
+                })
+                return
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                
+                let alert = UIAlertController(title: "Alert", message: "Action submitted successfully ", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default){
+                    action in
+                    self.loader.hideLoading();
+                    self.navigationController?.popToRootViewControllerAnimated(true);
+                    })
+                self.presentViewController(alert, animated: true, completion: nil)
+            })
+        }
         
     }
     
