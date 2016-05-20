@@ -31,7 +31,7 @@ class Chart: UIView, DisplayViewDelegate {
     var chartDelegate:ChartDelegate?
 
     
-    init(frame: CGRect, graph: ChartTypesEnum,data:[String:[String:ChartUnitData]],axisValues:[String],colorValues:[String],xAxisName:String,yAxisName:String) {
+    init(frame: CGRect, graph: ChartTypesEnum,data:[String:[String:ChartUnitData]],axisValues:[String],colorValues:[String],xAxisName:String,yAxisName:String, title: String) {
         
         var high:CGFloat = 0.0;
         
@@ -96,7 +96,8 @@ class Chart: UIView, DisplayViewDelegate {
         
         titleView = UILabel.init(frame: CGRectZero);
         titleView.textAlignment = NSTextAlignment.Center;
-        titleView.text = xAxisName+" Vs "+yAxisName;
+        
+        titleView.text = title;
         
         legendView = LegendView.init(frame: CGRectZero, data: colorValues,colors:colors);
         super.init(frame: frame)

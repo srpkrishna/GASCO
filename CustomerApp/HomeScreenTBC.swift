@@ -31,6 +31,7 @@ class HomeScreenTBC: UITabBarController {
         
         self.fetchReport();
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

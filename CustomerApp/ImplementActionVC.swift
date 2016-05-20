@@ -62,6 +62,11 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
         getForm();
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = "Implement Action"
+    }
+    
     //TextField Customization
     func customizeTextField(textField: UITextField, canEdit: Bool){
         textField.placeholder = ""

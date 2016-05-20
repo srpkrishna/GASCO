@@ -21,6 +21,9 @@ class ColumnDisplayView: DisplayView {
     var barSpace:CGFloat = 0
     var maxBarWidth:CGFloat = 0
     
+    var popupWidth: CGFloat = 0
+    var popupHeight: CGFloat = 0
+    
     override func layoutSubviews() {
         self.drawChart();
     }
@@ -103,7 +106,7 @@ class ColumnDisplayView: DisplayView {
                 let vc = storyboard.instantiateViewControllerWithIdentifier("popup") as UIViewController
                 
                 vc.modalPresentationStyle = UIModalPresentationStyle.Popover
-                vc.preferredContentSize = CGSizeMake(320, 90)
+                vc.preferredContentSize = CGSizeMake(self.popupWidth, self.popupHeight)
                 vc.popoverPresentationController?.sourceRect = CGRect(x: (width!/2), y: 1, width:0, height:0);
                 vc.popoverPresentationController?.sourceView = recognizer.view;
                 
@@ -139,6 +142,18 @@ class ColumnDisplayView: DisplayView {
                 
                 self.maxBarWidth = CGFloat(maxbarWidth)
                 self.barSpace = CGFloat(barSpace)
+                
+                let popupComponentSizes = iPhoneComponents!["PopupView"] as? Dictionary<String, AnyObject>
+                let tempPopupWidth: Int = (popupComponentSizes!["popupWidth"] as? Int)!
+                let tempPopupHeight: Int = (popupComponentSizes!["popupHeight"] as? Int)!
+                
+                self.popupWidth =  CGFloat(tempPopupWidth)
+                self.popupHeight = CGFloat(tempPopupHeight)
+                
+                print("tempPopupWidth = \(popupWidth))")
+                print("tempPopupHeight = \(popupHeight))")
+
+                
         }
     }
     

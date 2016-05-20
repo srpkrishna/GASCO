@@ -25,7 +25,7 @@
 		<key>StackedColumnDisplayView</key>
 		<dict>
 			<key>maxBarWidth</key>
-			<integer>15</integer>
+			<integer>32</integer>
 			<key>barSpace</key>
 			<integer>4</integer>
 		</dict>
@@ -73,6 +73,13 @@
 			<integer>4</integer>
 			<key>labelHeight</key>
 			<integer>8</integer>
+		</dict>
+		<key>PopupView</key>
+		<dict>
+			<key>popupWidth</key>
+			<integer>260</integer>
+			<key>popupHeight</key>
+			<integer>78</integer>
 		</dict>
 	</dict>
 	<key>iPad</key>
@@ -146,6 +153,13 @@
 			<integer>10</integer>
 			<key>labelHeight</key>
 			<integer>16</integer>
+		</dict>
+		<key>PopupView</key>
+		<dict>
+			<key>popupWidth</key>
+			<integer>320</integer>
+			<key>popupHeight</key>
+			<integer>90</integer>
 		</dict>
 	</dict>
 </dict>

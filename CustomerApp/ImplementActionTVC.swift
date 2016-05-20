@@ -14,7 +14,10 @@ class ImplementActionTVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.topItem?.title = "Implement Action"
     }
 
     override func didReceiveMemoryWarning() {
