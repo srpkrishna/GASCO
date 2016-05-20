@@ -16,6 +16,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet var loginSuperView: UIView!
+    let loader = LoadingScreen.init();
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginIdTextView.delegate = self
         loginIdTextView.attributedPlaceholder = NSAttributedString(string: "Login Id", attributes: [NSForegroundColorAttributeName : textViewColor])
         loginIdTextView.textColor = textViewColor
+        loginIdTextView.text! = "christineb"
         
         passwordTextView.delegate = self
         passwordTextView.attributedPlaceholder =  NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : textViewColor])
@@ -77,13 +79,76 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func validateLogin(sender: UIButton) {
         
-        //Login Code Goes Here.
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let myController   = storyboard.instantiateViewControllerWithIdentifier("EntryNavigationBar")
-        self.presentViewController(myController, animated: true, completion: nil)
         
         print("loginIdTextView = \(loginIdTextView.text!)")
         print("passwordTextView = \(passwordTextView.text!)")
+        
+        let reportURL = m2API.handShakeURL(loginIdTextView.text!);
+        let request = NSMutableURLRequest(URL: reportURL)
+        request.HTTPMethod = "GET";
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let serverCall = HttpCall.init();
+        loader.showLoading();
+        serverCall.getData(request){(data,error) -> Void in
+            
+            
+            if(error != "")
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.loader.hideLoading()
+                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                })
+                return
+            }
+            
+            var jsonDict:NSMutableDictionary?
+            
+            do
+            {
+                jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
+                
+                if let isAuthenticated = jsonDict!["authenticated"] as? String
+                {
+                    if(isAuthenticated.caseInsensitiveCompare("yes") == NSComparisonResult.OrderedSame)
+                    {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.loader.hideLoading()
+                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            let myController   = storyboard.instantiateViewControllerWithIdentifier("EntryNavigationBar")
+                            self.presentViewController(myController, animated: true, completion: nil)
+                         })
+                        
+                    }else
+                    {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.loader.hideLoading()
+                            let alert = UIAlertController(title: "Alert", message: "Authentication failed. Please check your credentials", preferredStyle: UIAlertControllerStyle.Alert)
+                            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                            self.presentViewController(alert, animated: true, completion: nil)
+                            
+                        })
+                        
+                    }
+                
+                }
+                
+                
+            }
+            catch let error as NSError {
+                // error handling
+                NSLog("error %@", error.description);
+            }
+            
+            
+        };
+        
+
     
     }
 }

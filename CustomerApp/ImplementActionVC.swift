@@ -3,6 +3,10 @@ import UIKit
 
 class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDelegate {
     
+    let loader = LoadingScreen.init();
+    var actionElement: ActionElement?
+    var jsonDict:NSMutableDictionary?
+    
     @IBOutlet weak var actionApprovalBY: UITextField!
     @IBOutlet weak var actionOwner: UITextField!
     @IBOutlet weak var actionStartDate: UITextField!
@@ -39,6 +43,8 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
         customizeTextView(results, canEdit: true, tag: 1002)
         customizeTextView(commentsTextView, canEdit: true, tag: 1003)
         
+        
+        
        //TabBar Customization
         let sendForApprovalTapGesture = UITapGestureRecognizer(target: self, action: "didSelectActionItem:")
         addTapGestureForTabBar(sendForApprovalTapGesture, label: sendForApproval, tag: 39)
@@ -52,6 +58,8 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
         
         let dismissKeyBoard = UITapGestureRecognizer(target: self, action: "dismissKeyBoardOnTapofView:")
         self.view.addGestureRecognizer(dismissKeyBoard)
+        
+        getForm();
     }
     
     //TextField Customization
@@ -126,6 +134,170 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
     func didSelectActionItem(sender: UIGestureRecognizer) {
         
         //Action Code goes here
+        
+    }
+    
+    func getForm(){
+        let reportURL = m2API.actionDetailsDataUrl(actionElement!.taskId)
+        let request = NSMutableURLRequest(URL: reportURL)
+        request.HTTPMethod = "GET";
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        let serverCall = HttpCall.init();
+        loader.showLoading();
+        serverCall.getData(request){(data,error) -> Void in
+            
+            
+            if(error != "")
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.loader.hideLoading()
+                })
+                return
+            }
+            
+            var content:NSMutableDictionary?
+            var resources:NSMutableDictionary?
+            
+            do
+            {
+                self.jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
+                
+                if let contents = self.jsonDict!["content"] as? NSDictionary
+                {
+                    content = NSMutableDictionary.init(dictionary: contents);
+                }
+                if let resource  = self.jsonDict!["resources"] as? NSDictionary
+                {
+                    resources = NSMutableDictionary.init(dictionary: resource);
+                }
+                
+            }
+            catch let error as NSError {
+                // error handling
+                NSLog("error %@", error.description);
+            }
+            
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                //self.tableView.reloadData()
+                
+                
+//                self.actionTitle.text = self.actionElement?.title;
+//                
+//                if let Obj = content!["ISSUE_TITLE"] as? NSDictionary
+//                {
+//                    self.issueTitle.text = Obj["value"] as? String;
+//                    
+//                }
+                
+                if let obj = content!["ACTION_OWNER"] as? NSDictionary
+                {
+                    let user = obj["value"] as? String;
+                    
+                    if let users = resources!["MS_ISM_Users_All_12"] as? NSDictionary
+                    {
+                        if let valObj = users[user!] as? NSDictionary
+                        {
+                            self.actionOwner.text = valObj["value"] as? String;
+                        }
+                    }
+                    
+                    
+                }
+                
+                if let obj = content!["ACTION_APPROVER1"] as? NSDictionary
+                {
+                    let user = obj["value"] as? String;
+                    
+                    if let users = resources!["MS_ISM_Users_All_13"] as? NSDictionary
+                    {
+                        if let valObj = users[user!] as? NSDictionary
+                        {
+                            self.actionApprovalBY.text = valObj["value"] as? String;
+                        }
+                    }
+                    
+                    
+                }
+                
+                if let obj = content!["ACTION_DETAILS"] as? NSDictionary
+                {
+                    
+                    if let actDetails:String = obj["value"] as? String
+                    {
+                        self.actionDescriptionTextView.text = actDetails;
+                    }
+                    
+                }
+                
+                if let Obj = content!["ACTION_START_DATE"] as? NSDictionary
+                {
+                    if let date:String = Obj["value"] as? String
+                    {
+                        self.actionStartDate.text = date;
+                    }
+                    
+                }
+                
+                if let Obj = content!["ACTION_DUE_DATE"] as? NSDictionary
+                {
+                    self.actionDueDate.text = Obj["value"] as? String;
+                    
+                }
+                
+                if let Obj = content!["ACTION_WORK_DONE"] as? NSDictionary
+                {
+                    self.workDoneTextView.text = Obj["value"] as? String;
+                    
+                }
+                
+                if let Obj = content!["ORIG_ACTION_DUE_DT"] as? NSDictionary
+                {
+                    if let date:String = Obj["value"] as? String
+                    {
+                        self.originalActionDueDate.text = date;
+                    }
+                   
+                }
+                
+                if let Obj = content!["ACTION_PRIORITY"] as? NSDictionary
+                {
+                    if let date:String = Obj["value"] as? String
+                    {
+                        self.priority.text = date;
+                    }
+                    
+                }
+                
+                if let Obj = content!["ACTION_RESULTS"] as? NSDictionary
+                {
+                    self.results.text = Obj["value"] as? String;
+                    
+                }
+                
+                if let Obj = content!["ACTION_COMMENTS"] as? NSDictionary
+                {
+                    self.commentsTextView.text = Obj["value"] as? String;
+                    
+                }
+                self.loader.hideLoading();
+                
+                //                ACTION_OWNER
+                //                ACTION_APPROVER1
+                //                ACTION_DETAILS
+                //                ACTION_START_DATE
+                //                ACTION_DUE_DATE
+                //                ACTION_WORK_DONE
+            })
+            
+        }
+        
         
     }
     

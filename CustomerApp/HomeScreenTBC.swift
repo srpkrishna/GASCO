@@ -10,6 +10,7 @@ import UIKit
 
 class HomeScreenTBC: UITabBarController {
     
+    let loader = LoadingScreen.init();
     
     @IBOutlet weak var actionTabBar: UITabBar!
 
@@ -27,9 +28,141 @@ class HomeScreenTBC: UITabBarController {
         {
             tabBarItem.titlePositionAdjustment = tabBarItemPostionAdjustmentOffset
         }
+        
+        self.fetchReport();
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func fetchReport() {
+        
+        loader.showLoading();
+        var pendingApprovalItems:[ActionElement] = [ActionElement]()
+        var openItems:[ActionElement] = [ActionElement]()
+        let reportURL = m2API.actionItemsDataUrl()
+        let request = NSMutableURLRequest(URL: reportURL)
+        request.HTTPMethod = "POST";
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        do
+        {
+            if let path = NSBundle.mainBundle().pathForResource("input", ofType: "json")
+            {
+                if let jsonData = NSData(contentsOfFile: path)
+                {
+                    let jsonDict = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions(rawValue: 0)) as? NSDictionary
+                    request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(jsonDict!,options:NSJSONWritingOptions.init(rawValue: 0))
+                }
+            }
+            
+        }catch let error as NSError {
+            // error handling
+            NSLog("error %@", error.description);
+        }
+        
+        let serverCall = HttpCall.init();
+        serverCall.getData(request){(data,error) -> Void in
+            
+            var content:NSMutableDictionary?
+            
+            if(error != "")
+            {
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    self.loader.hideLoading()
+                })
+                return
+            }
+            
+            let string1 = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print(string1)
+            
+            do
+            {
+                let jsonDict = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions(rawValue: 0)) as? NSMutableDictionary
+                
+                if let contents = jsonDict!["content"] as? NSDictionary
+                {
+                    content = NSMutableDictionary.init(dictionary: contents);
+                }
+                
+            }
+            catch let error as NSError {
+                // error handling
+                NSLog("error %@", error.description);
+            }
+            
+            //            var actionItems:[ActionElement] = [ActionElement]()
+            if let rows:NSArray = content!["rows"]as? NSArray
+            {
+                for obj : AnyObject in rows {
+                    
+                    if let rowObject = obj as? NSDictionary
+                    {
+                        var cell = [String:String]()
+                        if let cells = rowObject["cells"] as? NSArray {
+                            
+                            for colObj : AnyObject in cells {
+                                if let cellObj = colObj as? NSDictionary {
+                                    
+                                    if let id:String = cellObj["id"] as? String
+                                    {
+                                        if let value:String = cellObj["value"] as? String
+                                        {
+                                            cell[id] = value;
+                                            
+                                        }
+                                    }
+                                    
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                        let act:ActionElement = ActionElement.init(id: cell["ACTION_ID"]!, title: cell["ACTION_TITLE"]!, taskId: cell["TASK_ID"]!, props: cell);
+                        
+                        if(cell["ACTION_STATUS"]!.caseInsensitiveCompare("Pending Approval") == NSComparisonResult.OrderedSame)
+                        {
+                            pendingApprovalItems.append(act);
+                            
+                        }else if(cell["ACTION_STATUS"]!.caseInsensitiveCompare("Open") == NSComparisonResult.OrderedSame)
+                        {
+                            
+                            
+                            openItems.append(act);
+                            
+                        }
+                        
+                        
+                    }
+                }
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.loader.hideLoading();
+                
+                if let approveActionTVC = self.childViewControllers[0] as? ApproveActionTVC
+                {
+                    approveActionTVC.pendingApprovalItems = pendingApprovalItems;
+                    approveActionTVC.tableView.reloadData();
+                }
+                
+                if let openActionTVC = self.childViewControllers[1] as? ImplementActionTVC
+                {
+                    openActionTVC.openItems = openItems;
+                    openActionTVC.tableView.reloadData();
+                }
+                
+            })
+        }
+        
+        
     }
 }

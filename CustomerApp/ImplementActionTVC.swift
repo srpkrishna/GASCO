@@ -9,11 +9,12 @@
 import UIKit
 
 class ImplementActionTVC: UITableViewController {
+    
+    var openItems:[ActionElement] = [ActionElement]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,8 +38,11 @@ class ImplementActionTVC: UITableViewController {
 
         let cell = tableView.dequeueReusableCellWithIdentifier("TableViewCell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = "text Label"
-        cell.detailTextLabel?.text = "detail Text Label"
+        let item = openItems[indexPath.row]
+        
+        cell.textLabel?.text = item.title
+        cell.detailTextLabel?.text = item.id
+        
         return cell
     }
     
@@ -49,7 +53,7 @@ class ImplementActionTVC: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let myController:ImplementActionVC   = storyboard.instantiateViewControllerWithIdentifier("ImplementActionVCID") as! ImplementActionVC
-
+        myController.actionElement = self.openItems[indexPath.row];
         self.navigationController?.pushViewController(myController, animated: true);
     }
 
