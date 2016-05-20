@@ -324,11 +324,11 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
                     
                 }
                 
-                if let obj = content!["ACTION_APPROVER1"] as? NSDictionary
+                if let obj = content!["ACTION_APPROVER2"] as? NSDictionary
                 {
                     let user = obj["value"] as? String;
                     
-                    if let users = resources!["MS_ISM_Users_All_13"] as? NSDictionary
+                    if let users = resources!["MS_ISM_Users_All_12"] as? NSDictionary
                     {
                         if let valObj = users[user!] as? NSDictionary
                         {
@@ -381,9 +381,15 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
                 
                 if let Obj = content!["ACTION_PRIORITY"] as? NSDictionary
                 {
-                    if let date:String = Obj["value"] as? String
+                    
+                    let user = Obj["value"] as? String;
+                    
+                    if let users = resources!["MS 001 ISM Common LOV Infolet_19"] as? NSDictionary
                     {
-                        self.priority.text = date;
+                        if let valObj = users[user!] as? NSDictionary
+                        {
+                            self.priority.text = valObj["value"] as? String;
+                        }
                     }
                     
                 }

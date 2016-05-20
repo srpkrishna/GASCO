@@ -36,12 +36,25 @@ class HomeScreenTBC: UITabBarController {
         self.navigationController?.navigationBar.barTintColor = navBarColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: navTitleFont!, NSForegroundColorAttributeName: navTitleColor]
         
+        let refresh:UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: "fetchReport");
+        let logout:UIBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "logOut");
+        
+        self.navigationItem.rightBarButtonItem = refresh;
+        self.navigationItem.leftBarButtonItem = logout;
+        
         self.fetchReport();
     }
     
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func logOut()
+    {
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            appDelegate.restartApp();
+        }
     }
     
     func fetchReport() {
