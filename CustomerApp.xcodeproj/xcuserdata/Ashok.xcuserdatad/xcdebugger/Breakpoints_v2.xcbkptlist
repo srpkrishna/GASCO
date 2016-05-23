@@ -62,13 +62,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CustomerApp/LoginViewController.swift"
-            timestampString = "484625636.612634"
+            timestampString = "485684841.649015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "textFieldShouldReturn(_:)"
-            landmarkType = "5">
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "LoginViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

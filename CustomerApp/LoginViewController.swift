@@ -32,10 +32,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginIdTextView.attributedPlaceholder = NSAttributedString(string: "Login Id", attributes: [NSForegroundColorAttributeName : textViewColor])
         loginIdTextView.textColor = textViewColor
         loginIdTextView.text! = "christineb"
+        loginIdTextView.tag = 11
         
         passwordTextView.delegate = self
         passwordTextView.attributedPlaceholder =  NSAttributedString(string: "Password", attributes: [NSForegroundColorAttributeName : textViewColor])
         passwordTextView.textColor = textViewColor
+        passwordTextView.tag = 12
         
         //Login Button
         loginButton.layer.cornerRadius = 10
@@ -52,6 +54,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
        animateViewMoving(true, moveValue: 125)
+        if textField.tag == 11 {
+            loginIdTextView.textColor = UIColor.whiteColor()
+        }
+        else {
+            passwordTextView.textColor = UIColor.whiteColor()
+        }
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
