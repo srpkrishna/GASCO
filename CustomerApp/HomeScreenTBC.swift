@@ -20,9 +20,12 @@ class HomeScreenTBC: UITabBarController {
         let tabBarFont = UIFont(name: "Lato-black", size: 14)
         let tabBarItemPostionAdjustmentOffset = UIOffset(horizontal: 4, vertical: -14)
         
+        
         let appearance = UITabBarItem.appearance()
-        let attributes: [String: AnyObject] = [NSFontAttributeName:tabBarFont!, NSForegroundColorAttributeName: UIColor.whiteColor()]
-        appearance.setTitleTextAttributes(attributes, forState: .Normal)
+        let unSelectedAttributes: [String: AnyObject] = [NSFontAttributeName:tabBarFont!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        let selectedAttributes:[String: AnyObject] = [NSFontAttributeName: tabBarFont!, NSForegroundColorAttributeName:UIColor.orangeColor()]
+        appearance.setTitleTextAttributes(unSelectedAttributes, forState: .Normal)
+        appearance.setTitleTextAttributes(selectedAttributes, forState: .Selected)
         
         for tabBarItem in self.tabBar.items!
         {
