@@ -152,6 +152,13 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
             let val = self.commentsTextView.text;
             object.setObject(val, forKey: "value")
             content?.setObject(object, forKey: "ACTION_COMMENTS");
+        }else
+        {
+            var object = [String:String]();
+            let val = self.commentsTextView.text;
+            object.updateValue(val, forKey: "value")
+            content?.setObject(object, forKey: "ACTION_COMMENTS");
+            
         }
         
         if let Obj = content!["ACTION_RESULTS"] as? NSMutableDictionary
@@ -160,6 +167,13 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
             let val = self.results.text;
             object.setObject(val, forKey: "value")
             content?.setObject(object, forKey: "ACTION_RESULTS");
+        }else
+        {
+            var object = [String:String]();
+            let val = self.results.text;
+            object.updateValue(val, forKey: "value")
+            content?.setObject(object, forKey: "ACTION_RESULTS");
+            
         }
         
         if let Obj = content!["ACTION_WORK_DONE"] as? NSMutableDictionary
@@ -168,6 +182,13 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
             let val = self.workDoneTextView.text;
             object.setObject(val, forKey: "value")
             content?.setObject(object, forKey: "ACTION_WORK_DONE");
+        }else
+        {
+            var object = [String:String]();
+            let val = self.workDoneTextView.text;
+            object.updateValue(val, forKey: "value")
+            content?.setObject(object, forKey: "ACTION_WORK_DONE");
+            
         }
         
         if let Obj = content!["ACTION_DETAILS"] as? NSMutableDictionary
@@ -177,6 +198,14 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
             object.setObject(val, forKey: "value")
             content?.setObject(object, forKey: "ACTION_DETAILS");
         }
+        
+        if let Obj = content!["CUSTOM_FIELD1"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            object.setObject("1", forKey: "value")
+            content?.setObject(object, forKey: "CUSTOM_FIELD1");
+        }
+        
         
         
         let itemTag = (sender.view as! UILabel).tag
@@ -262,6 +291,7 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
         serverCall.getData(request){(data,error) -> Void in
             
             
+            
             if(error != "")
             {
                 
@@ -273,6 +303,9 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
                 })
                 return
             }
+            
+            let string1 = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            print(string1)
             
             var content:NSMutableDictionary?
             var resources:NSMutableDictionary?
