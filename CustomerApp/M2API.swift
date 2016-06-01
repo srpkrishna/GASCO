@@ -52,7 +52,7 @@ struct m2API {
     }
     
     static func actionSubmitUrl(id:String,queryparams:String) -> NSURL {
-        var stringUrl = "http://msi-vmintgasca1/metricstream/m2/2.2/christineb/tasks/";
+        var stringUrl =  getURL("/tasks/");
         stringUrl = stringUrl.stringByAppendingString(id);
         stringUrl = stringUrl.stringByAppendingString("/form");
         stringUrl = stringUrl.stringByAppendingString(queryparams);

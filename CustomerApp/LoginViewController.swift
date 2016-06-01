@@ -31,7 +31,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginIdTextView.delegate = self
         loginIdTextView.attributedPlaceholder = NSAttributedString(string: "Login Id", attributes: [NSForegroundColorAttributeName : textViewColor])
         loginIdTextView.textColor = textViewColor
-        loginIdTextView.text! = "christineb"
         loginIdTextView.tag = 11
         
         passwordTextView.delegate = self
