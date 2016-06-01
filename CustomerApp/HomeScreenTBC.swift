@@ -45,7 +45,7 @@ class HomeScreenTBC: UITabBarController {
         self.navigationItem.rightBarButtonItem = refresh;
         self.navigationItem.leftBarButtonItem = logout;
         
-        self.fetchReport();
+       self.fetchReport();
     }
     
 
@@ -62,7 +62,8 @@ class HomeScreenTBC: UITabBarController {
     
     func fetchReport() {
         
-        loader.showLoading();
+        loader.showLoading()
+    
         var pendingApprovalItems:[ActionElement] = [ActionElement]()
         var openItems:[ActionElement] = [ActionElement]()
         let reportURL = m2API.actionItemsDataUrl()
