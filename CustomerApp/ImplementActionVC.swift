@@ -205,7 +205,18 @@ class ImplementActionVC: UIViewController, UITextViewDelegate, UIScrollViewDeleg
             object.setObject("1", forKey: "value")
             content?.setObject(object, forKey: "CUSTOM_FIELD1");
         }
-        
+        if let Obj = content!["PREVIOUS_STAGE"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            object.setObject("20", forKey: "value")
+            content?.setObject(object, forKey: "PREVIOUS_STAGE");
+        }
+        if let Obj = content!["DD_PROCESS_CODE"] as? NSMutableDictionary
+        {
+            let object = Obj.mutableCopy();
+            object.setObject("ISM", forKey: "value")
+            content?.setObject(object, forKey: "DD_PROCESS_CODE");
+        }
         
         
         let itemTag = (sender.view as! UILabel).tag
