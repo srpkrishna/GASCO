@@ -11,7 +11,7 @@ import Foundation
 
 struct m2API {
     
-    static let baseURL = "http://msi-vmintgasca1/metricstream/m2/2.2/";
+    static let baseURL = "https://gasco.sandbox.metricstream.com/metricstream/m2/2.2/";
     static var userID = "";
     
     static func getURL(uri:String) -> String
@@ -34,12 +34,12 @@ struct m2API {
     }
     
     static func inputDataURL() -> NSURL {
-        let url = NSURL(string: getURL("/reports/R-100802/inputdata"))
+        let url = NSURL(string: getURL("/reports/R-100908/inputdata"))
         return url!
     }
     
     static func actionItemsDataUrl() -> NSURL {
-        let url = NSURL(string: getURL("/reports/R-100802/data"))
+        let url = NSURL(string: getURL("/reports/R-100908/data"))
         return url!
     }
     
